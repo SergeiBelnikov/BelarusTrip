@@ -1,880 +1,352 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Туристический маршрут по Республике Беларусь - 11-18 ноября 2025</title>
-    <style>
-        :root {
-            /* Official color palette */
-            --color-primary-dark: #1a3a52;
-            --color-primary-blue: #4a7c99;
-            --color-text-dark: #2c3e50;
-            --color-background-light: #f8f9fa;
-            --color-surface-white: #ffffff;
-            --color-gold-accent: #d4af37;
-            --color-border-light: #dee2e6;
-            --color-gray-medium: #6c757d;
-            
-            --font-family-serif: 'Georgia', 'Times New Roman', serif;
-            --font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            --space-8: 8px;
-            --space-12: 12px;
-            --space-16: 16px;
-            --space-20: 20px;
-            --space-24: 24px;
-            --space-32: 32px;
-            --space-40: 40px;
-            --radius-sm: 4px;
-            --radius-base: 6px;
-            --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.08);
-            --shadow-medium: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-sans); }
+.wrap { padding: 1rem 0; }
+.header { margin-bottom: 1.5rem; }
+.header h2 { font-size: 18px; font-weight: 500; color: var(--color-text-primary); }
+.header p { font-size: 13px; color: var(--color-text-secondary); margin-top: 4px; }
+.section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-tertiary); margin: 1.5rem 0 0.5rem; }
+.superset-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 500; background: #FAEEDA; color: #633806; border-radius: 4px; padding: 2px 8px; margin-bottom: 6px; }
+.card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); margin-bottom: 8px; overflow: hidden; cursor: pointer; transition: border-color 0.15s; }
+.card:hover { border-color: var(--color-border-secondary); }
+.card.open { border-color: var(--color-border-secondary); }
+.card-header { display: flex; align-items: center; gap: 12px; padding: 14px 16px; }
+.num { width: 28px; height: 28px; border-radius: 50%; background: var(--color-background-secondary); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; color: var(--color-text-secondary); flex-shrink: 0; }
+.card-title { flex: 1; }
+.card-title .name { font-size: 14px; font-weight: 500; color: var(--color-text-primary); }
+.card-title .sets { font-size: 12px; color: var(--color-text-secondary); margin-top: 2px; }
+.chevron { color: var(--color-text-tertiary); font-size: 16px; transition: transform 0.2s; }
+.card.open .chevron { transform: rotate(180deg); }
+.card-body { padding: 0 16px 16px; display: none; border-top: 0.5px solid var(--color-border-tertiary); }
+.card.open .card-body { display: block; }
+.section-title { font-size: 12px; font-weight: 500; color: var(--color-text-secondary); margin: 12px 0 6px; }
+.machine-block { display: flex; align-items: flex-start; gap: 10px; background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 10px 12px; margin-bottom: 10px; }
+.machine-icon { font-size: 20px; color: var(--color-text-secondary); flex-shrink: 0; margin-top: 1px; }
+.machine-text { font-size: 13px; color: var(--color-text-primary); line-height: 1.5; }
+.machine-text strong { font-weight: 500; display: block; margin-bottom: 2px; }
+.steps { list-style: none; }
+.steps li { display: flex; gap: 10px; font-size: 13px; color: var(--color-text-primary); line-height: 1.5; padding: 4px 0; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.steps li:last-child { border-bottom: none; }
+.step-num { width: 18px; height: 18px; border-radius: 50%; background: var(--color-background-info); color: var(--color-text-info); font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+.tips { display: flex; flex-direction: column; gap: 6px; }
+.tip { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; color: var(--color-text-primary); line-height: 1.5; }
+.tip i { color: #1D9E75; flex-shrink: 0; margin-top: 2px; }
+.muscles { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.muscle-tag { font-size: 12px; background: var(--color-background-secondary); color: var(--color-text-secondary); padding: 3px 10px; border-radius: 20px; border: 0.5px solid var(--color-border-tertiary); }
+.drop-note { font-size: 12px; color: var(--color-text-secondary); background: #FAEEDA; border-radius: 4px; padding: 6px 10px; margin-top: 8px; }
+</style>
 
-        body {
-            font-family: var(--font-family-sans);
-            background-color: var(--color-background-light);
-            color: var(--color-text-dark);
-            line-height: 1.75;
-            padding: var(--space-20);
-        }
+<div class="wrap">
+<div class="header">
+  <h2>День 1 — спина и плечи</h2>
+  <p>Нажми на упражнение, чтобы узнать технику выполнения</p>
+</div>
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
+<div class="section-label">Разминка / основа</div>
 
-        .header {
-            text-align: center;
-            margin-bottom: var(--space-40);
-            padding: var(--space-32) var(--space-24);
-            background-color: var(--color-surface-white);
-            border-radius: var(--radius-sm);
-            border: 2px solid var(--color-primary-dark);
-            box-shadow: var(--shadow-medium);
-            border-top: 4px solid var(--color-gold-accent);
-        }
-
-        .header h1 {
-            font-family: var(--font-family-serif);
-            font-size: 2rem;
-            margin-bottom: var(--space-12);
-            color: var(--color-primary-dark);
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        .header .subtitle {
-            color: var(--color-text-dark);
-            font-size: 1rem;
-            margin-bottom: var(--space-8);
-            font-weight: 500;
-        }
-
-        .header .dates {
-            color: var(--color-gray-medium);
-            font-size: 0.95rem;
-            font-weight: 400;
-        }
-
-        .day-indicator {
-            text-align: center;
-            color: var(--color-gray-medium);
-            font-size: 0.85rem;
-            margin-bottom: var(--space-20);
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: var(--space-8);
-            background-color: #ffffff;
-            border: 1px solid var(--color-border-light);
-            border-radius: var(--radius-sm);
-        }
-
-        .day-card {
-            background-color: var(--color-surface-white);
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--color-border-light);
-            box-shadow: var(--shadow-subtle);
-            padding: var(--space-32);
-            margin-bottom: var(--space-24);
-        }
-
-        .day-card.birthday {
-            border-top: 3px solid var(--color-gold-accent);
-            background: var(--color-surface-white);
-        }
-
-        .day-title {
-            font-family: var(--font-family-serif);
-            font-size: 1.75rem;
-            margin-bottom: var(--space-8);
-            color: var(--color-primary-dark);
-            font-weight: 600;
-            border-bottom: 2px solid var(--color-gold-accent);
-            padding-bottom: var(--space-12);
-        }
-
-        .day-date {
-            color: var(--color-gray-medium);
-            font-size: 1rem;
-            margin-bottom: var(--space-24);
-            font-weight: 400;
-        }
-
-        .section {
-            margin-bottom: var(--space-32);
-        }
-
-        .section-title {
-            font-family: var(--font-family-serif);
-            font-size: 1.2rem;
-            margin-bottom: var(--space-16);
-            color: var(--color-primary-dark);
-            border-bottom: 1px solid var(--color-border-light);
-            padding-bottom: var(--space-8);
-            font-weight: 600;
-        }
-
-        .timeline-item {
-            display: flex;
-            margin-bottom: var(--space-16);
-            padding-left: var(--space-20);
-            position: relative;
-        }
-
-        .timeline-item::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 6px;
-            width: 8px;
-            height: 8px;
-            background-color: var(--color-primary-blue);
-            border-radius: 50%;
-        }
-
-        .timeline-time {
-            font-weight: 600;
-            min-width: 80px;
-            color: var(--color-primary-blue);
-            font-family: monospace;
-        }
-
-        .timeline-activity {
-            flex: 1;
-            color: var(--color-text);
-        }
-
-        .info-item {
-            margin-bottom: var(--space-12);
-            padding: var(--space-12) var(--space-16);
-            background-color: #f8f9fa;
-            border-radius: var(--radius-sm);
-            border-left: 3px solid var(--color-primary-blue);
-        }
-
-        .restaurant-item {
-            margin-bottom: var(--space-16);
-            padding: var(--space-16);
-            background-color: #ffffff;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--color-border-light);
-        }
-
-        .restaurant-name {
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: var(--space-8);
-        }
-
-        .restaurant-cuisine {
-            color: var(--color-text-secondary);
-            font-style: italic;
-            margin-bottom: var(--space-8);
-        }
-
-        .restaurant-notes {
-            color: var(--color-text);
-            font-size: 0.95rem;
-        }
-
-        .event-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: var(--space-12);
-        }
-
-        .event-table th {
-            background-color: var(--color-primary-dark);
-            color: white;
-            padding: var(--space-12);
-            text-align: left;
-            font-weight: 500;
-            font-size: 0.9rem;
-            border: 1px solid var(--color-border-light);
-        }
-
-        .event-table td {
-            padding: var(--space-12);
-            border: 1px solid var(--color-border-light);
-            font-size: 0.95rem;
-        }
-
-        .event-table tr:nth-child(even) {
-            background-color: #f8f9fa;
-        }
-
-        .event-table tr:hover {
-            background-color: #e9ecef;
-        }
-
-        .note-box {
-            background-color: #fff3cd;
-            border: 1px solid #ffc107;
-            border-radius: var(--radius-sm);
-            padding: var(--space-16);
-            color: #856404;
-        }
-
-        .info-label {
-            font-weight: 600;
-            color: var(--color-primary-dark);
-            margin-right: var(--space-8);
-        }
-
-        .day-number {
-            display: inline-block;
-            background-color: var(--color-primary-dark);
-            color: white;
-            padding: var(--space-4) var(--space-12);
-            border-radius: var(--radius-sm);
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-right: var(--space-8);
-        }
-
-        /* Clickable links styling */
-        .place-link, .restaurant-link, .hotel-link {
-            color: var(--color-primary-blue);
-            text-decoration: none;
-            cursor: pointer;
-            transition: color 0.2s ease;
-            border-bottom: 1px dotted var(--color-primary-blue);
-        }
-
-        .place-link:hover, .restaurant-link:hover, .hotel-link:hover {
-            color: var(--color-primary-dark);
-            border-bottom: 1px solid var(--color-primary-dark);
-        }
-
-        .navigation {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: var(--space-32);
-            gap: var(--space-16);
-        }
-
-        .btn {
-            padding: var(--space-12) var(--space-24);
-            background-color: var(--color-primary-dark);
-            color: white;
-            border: 1px solid var(--color-primary-dark);
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .btn:hover:not(:disabled) {
-            background-color: var(--color-primary-blue);
-            border-color: var(--color-primary-blue);
-        }
-
-        .btn:disabled {
-            background-color: #adb5bd;
-            border-color: #adb5bd;
-            cursor: not-allowed;
-            opacity: 0.6;
-        }
-
-        .btn-done {
-            background-color: #28a745;
-        }
-
-        .btn-done:hover {
-            background-color: #218838;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 3px;
-            background-color: var(--color-border-light);
-            border-radius: 0;
-            overflow: hidden;
-            margin-top: var(--space-24);
-        }
-
-        .progress-fill {
-            height: 100%;
-            background-color: var(--color-gold-accent);
-            transition: width 0.3s ease;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding: var(--space-12);
-            }
-
-            .header h1 {
-                font-size: 1.5rem;
-            }
-
-            .day-card {
-                padding: var(--space-20);
-            }
-
-            .day-title {
-                font-size: 1.4rem;
-            }
-
-            .timeline-item {
-                flex-direction: column;
-            }
-
-            .timeline-time {
-                margin-bottom: var(--space-8);
-            }
-
-            .navigation {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>Туристический маршрут по Республике Беларусь</h1>
-            <div class="subtitle">Путешествие: Минск — Гродно — Витебск — Полоцк</div>
-            <div class="dates">11-18 ноября 2025 года | 8 дней / 7 ночей</div>
-        </div>
-
-        <div class="day-indicator" id="dayIndicator"></div>
-        
-        <div id="dayContent"></div>
-
-        <div class="navigation">
-            <button class="btn" id="prevBtn" onclick="changeDay(-1)">◀ Предыдущий</button>
-            <button class="btn" id="nextBtn" onclick="changeDay(1)">Следующий ▶</button>
-        </div>
-
-        <div class="progress-bar">
-            <div class="progress-fill" id="progressFill"></div>
-        </div>
+<div class="card" onclick="toggle(this)">
+  <div class="card-header">
+    <div class="num">1</div>
+    <div class="card-title">
+      <div class="name">Подтягивания в гравитроне</div>
+      <div class="sets">3 подхода × 15 повторов</div>
     </div>
+    <i class="ti ti-chevron-down chevron" aria-hidden="true"></i>
+  </div>
+  <div class="card-body">
+    <div class="machine-block">
+      <i class="ti ti-device-desktop-analytics machine-icon" aria-hidden="true"></i>
+      <div class="machine-text">
+        <strong>Гравитрон (Assisted Pull-up Machine)</strong>
+        Большой вертикальный тренажёр с коленной подставкой. Помогает подтягиваться — чем больше вес на стеке, тем легче. Начни с противовеса ~30–40 кг.
+      </div>
+    </div>
+    <div class="section-title">Техника выполнения</div>
+    <ul class="steps">
+      <li><span class="step-num">1</span>Встань на коленную подушку. Возьмись за верхние ручки прямым хватом чуть шире плеч.</li>
+      <li><span class="step-num">2</span>Свесь корпус вниз — полное вытяжение. Лопатки вниз и назад.</li>
+      <li><span class="step-num">3</span>Тяни себя вверх, пока подбородок не пройдёт планку. Локти ведут вниз и назад.</li>
+      <li><span class="step-num">4</span>Медленно опускайся — 2–3 секунды вниз.</li>
+    </ul>
+    <div class="section-title">Ключевые ошибки</div>
+    <div class="tips">
+      <div class="tip"><i class="ti ti-check" aria-hidden="true"></i>Не тяни шею вперёд — подбородок не должен быть «первым»</div>
+      <div class="tip"><i class="ti ti-check" aria-hidden="true"></i>Не раскачивай тело — движение строго вертикальное</div>
+      <div class="tip"><i class="ti ti-check" aria-hidden="true"></i>Своди лопатки внизу перед каждым повтором</div>
+    </div>
+    <div class="section-title">Работающие мышцы</div>
+    <div class="muscles">
+      <span class="muscle-tag">Широчайшие</span><span class="muscle-tag">Ромбовидные</span><span class="muscle-tag">Бицепс</span><span class="muscle-tag">Задняя дельта</span>
+    </div>
+  </div>
+</div>
 
-    <script>
-        const daysData = [
-            {
-                day: 1,
-                date: "11 ноября",
-                title: "Прилёт + Минск",
-                timeline: [
-                    { time: "14:35", activity: "Прилёт в аэропорт Минск-2", type: "travel" },
-                    { time: "15:30", activity: "Аренда автомобиля", type: "travel" },
-                    { time: "16:00", activity: "По желанию: Прогулка по центру Минска", type: "activity", places: [
-                        { name: "Площадь Независимости", city: "Минск" },
-                        { name: "Троицкое предместье", city: "Минск" },
-                        { name: "набережная Свислочи", city: "Минск" }
-                    ]},
-                    { time: "19:00", activity: "Заселение в отель", type: "activity" },
-                    { time: "20:30", activity: "Ужин в ресторане", type: "meal", restaurant: "Литсвины" }
-                ],
-                accommodation: "Минск центр или возле аэропорта",
-                restaurants: [
-                    { name: "Литсвины", cuisine: "Авторская белорусская кухня", notes: "Современная интерпретация национальных блюд", city: "Минск" }
-                ],
-                alternatives: [
-                    { name: "Музей Страна мини", description: "Миниатюры более 20 достопримечательностей Беларуси", city: "Минск" },
-                    { name: "Дом экспериментального искусства", description: "Выставки современных художников и арт-инсталляции", city: "Минск" }
-                ],
-                travel: { distance: "~25 км от аэропорта до города", time: "~45 минут" },
-                events: [
-                    { name: "Чиж & Co - Концерт легендарной группы", time: "20:00", place: "КЗ Минск", type: "Рок-концерт", price: "105-285 BYN", city: "Минск" },
-                    { name: "PEPEL NAHUDI - Концерт", time: "20:00", place: "Клуб Эхо двор", type: "Хип-хоп концерт", price: "TBD", city: "Минск" }
-                ]
-            },
-            {
-                day: 2,
-                date: "12 ноября",
-                title: "Минск → Лида → Гродно",
-                timeline: [
-                    { time: "09:00", activity: "🍳 Завтрак, выезд", type: "meal" },
-                    { time: "10:00", activity: "🚗 Отправление в Гродно через Лиду", type: "travel" },
-                    { time: "12:00", activity: "🍺 Прибытие на пивзавод", type: "activity", place: "Пивзавод Лидское", city: "Лида" },
-                    { time: "12:00-13:30", activity: "🍺 Экскурсия по пивзаводу с дегустацией", type: "activity" },
-                    { time: "13:30", activity: "🍽️ Обед в Лиде", type: "meal" },
-                    { time: "15:10", activity: "🚗 Дорога до Гродно (114 км, 1 ч 37 мин)", type: "travel" },
-                    { time: "16:47", activity: "🏙️ Прибытие в Гродно", type: "travel", place: "Гродно" },
-                    { time: "17:00", activity: "🏨 Заселение в отель", type: "activity", hotels: ["Семашко", "Кронон Парк"] },
-                    { time: "19:30", activity: "🍽️ Ужин в ресторане", type: "meal", restaurants: ["Кронон", "THE CULT"] }
-                ],
-                travel: { leg1: "Минск → Лида: 169 км, 2 ч 4 мин", leg2: "Лида → Гродно: 114 км, 1 ч 37 мин", total: "283 км, 3 ч 41 мин всего" },
-                accommodation: "Отель Семашко или Кронон Парк",
-                accommodationLinks: [
-                    { name: "Семашко", city: "Гродно" },
-                    { name: "Кронон Парк", city: "Гродно" }
-                ],
-                restaurants: [
-                    { name: "Кронон", cuisine: "Авторская белорусская", notes: "Лесная локация, национальные блюда", city: "Гродно" },
-                    { name: "THE CULT", cuisine: "Бутик-ресторан", notes: "Исторический центр города", city: "Гродно" }
-                ],
-                alternatives: [
-                    { name: "Старое кладбище на Антонова", description: "Некрополь XVIII века, музей под открытым небом", city: "Гродно" },
-                    { name: "Башни Кася и Бася", description: "Водонапорные башни с мастерскими художников", city: "Гродно" },
-                    { name: "Гродненская кунсткамера", description: "Анатомический музей в подвале баториевки", city: "Гродно" },
-                    { name: "Ботанический сад Жилибера", description: "Уникальный ботанический сад XVIII века", city: "Гродно" },
-                    { name: "Форт Гродно", description: "Военное укрепление с экскурсиями", city: "Гродно" },
-                    { name: "Озёра Синька и Зелёнка", description: "Необычные изумрудные озёра около д. Пышки", city: "Гродно область" }
-                ],
-                events: [
-                    { name: "Мистический перформанс Ван Гог. Insight", time: "19:00", place: "Театр на Немиге", type: "Театральное представление", price: "TBD", city: "Минск" }
-                ]
-            },
-            {
-                day: 3,
-                date: "13 ноября",
-                title: "Гродно → Малые города → Барановичи",
-                attractions: [
-                    { name: "Замок Стефана Батория", city: "Гродно" },
-                    { name: "Церковь Св. Франциска Ксавьера", city: "Гродно" },
-                    { name: "Колозская церковь", city: "Гродно" },
-                    { name: "неоготическая церковь", city: "Скидель" },
-                    { name: "синагога 1642 года", city: "Слоним" },
-                    { name: "канал Огинского", city: "Слоним" }
-                ],
-                accommodation: "Отель Марийский или Вилла Сарра",
-                accommodationLinks: [
-                    { name: "Марийский", city: "Барановичи" },
-                    { name: "Вилла Сарра", city: "Барановичи" }
-                ],
-                restaurants: [
-                    { name: "Парац Квётке", cuisine: "Традиционная белорусская", notes: "Аутентичные местные блюда", city: "Барановичи" },
-                    { name: "Провинция", cuisine: "Региональная кухня", notes: "Аутентичная провинциальная атмосфера", city: "Барановичи" }
-                ],
-                alternatives: [
-                    { name: "Августовский канал", description: "Водные прогулки на лодках и теплоходах", city: "Гродно область" },
-                    { name: "Дворец в Снове", description: "Архитектурный комплекс XIX века на берегу реки", city: "Сново" },
-                    { name: "Усадьба в Ястрембеле", description: "Историческая усадьба с парком", city: "Ястрембель" },
-                    { name: "Дворец в Павлиново", description: "Достопримечательность около Барановичей", city: "Павлиново" }
-                ],
-                travel: { route: "Гродно → Барановичи через малые города", distance: "~160 км", time: "~2 ч живописным маршрутом" },
-                events: [
-                    { name: "Музеи и выставки в Гродно", time: "10:00-18:00", place: "Музеи Гродно", type: "Культурные мероприятия", price: "TBD", city: "Гродно" }
-                ]
-            },
-            {
-                day: 4,
-                date: "14 ноября",
-                title: "Замки ЮНЕСКО - Несвиж & Мир",
-                attractions: [
-                    { name: "Замок Несвиж", city: "Несвиж", type: "UNESCO" },
-                    { name: "Замок Мир", city: "Мир", type: "UNESCO" }
-                ],
-                accommodation: "Минск центр или возле аэропорта",
-                restaurants: [
-                    { name: "Кухмистр", cuisine: "Традиционная белорусская", notes: "Исторический интерьер, пианист по вечерам", city: "Минск" },
-                    { name: "Камяница", cuisine: "Праздничная белорусская", notes: "Средневековый стиль интерьера", city: "Минск" }
-                ],
-                alternatives: [
-                    { name: "Лидский замок", description: "Оборонительное сооружение XIV века Великого княжества Литовского", city: "Лида" },
-                    { name: "Новогрудский замок", description: "Руины княжеского замка с богатой историей", city: "Новогрудок" },
-                    { name: "Любчанский замок", description: "Исторический замок XVI века", city: "Любча" },
-                    { name: "Прогулка по старинным бастионам Несвижа", description: "Осмотр территории с верхней части высокого вала", city: "Несвиж" }
-                ],
-                travel: { leg1: "Барановичи → Несвиж: 120 км, 1 ч 30 мин", leg2: "Несвиж → Мир: 30 км, 25 мин", leg3: "Мир → Минск: 95 км, 1 ч 15 мин", total: "245 км, 3 ч 10 мин всего" },
-                events: [
-                    { name: "Театральные представления в Минске", time: "19:00-22:00", place: "Театры Минска", type: "Театр", price: "TBD", city: "Минск" }
-                ]
-            },
-            {
-                day: 5,
-                date: "15 ноября",
-                title: "День в столице (День рождения)",
-                isBirthday: true,
-                timeline: [
-                    { time: "08:00", activity: "Завтрак", type: "meal" },
-                    { time: "09:00-12:00", activity: "МУЗЕИ И ГАЛЕРЕИ (ВЫБОР 1-2 ВАРИАНТОВ):", type: "section" },
-                    { time: "", activity: "&nbsp;&nbsp;&nbsp;ОПЦИЯ А: Национальная художественная галерея — шедевры белорусского и европейского искусства, средневековые иконы, современное искусство", type: "option", place: "Национальная художественная галерея Беларуси", city: "Минск" },
-                    { time: "", activity: "&nbsp;&nbsp;&nbsp;ОПЦИЯ Б: Национальный музей истории и культуры — древние артефакты, этнография, традиционная культура", type: "option", place: "Национальный музей истории и культуры Беларуси", city: "Минск" },
-                    { time: "", activity: "&nbsp;&nbsp;&nbsp;ОПЦИЯ В: Музей современного искусства — выставки современных художников, инсталляции, экспериментальное искусство", type: "option", place: "Музей современного искусства", city: "Минск" },
-                    { time: "", activity: "&nbsp;&nbsp;&nbsp;ОПЦИЯ Г: Музей истории литературы Беларуси им. Якуба Коласа", type: "option", place: "Музей истории литературы Беларуси им. Якуба Коласа", city: "Минск" },
-                    { time: "", activity: "&nbsp;&nbsp;&nbsp;ОПЦИЯ Д: Национальная библиотека Беларуси — архитектура, обзорная площадка, выставки книг", type: "option", place: "Национальная библиотека Беларуси", city: "Минск" },
-                    { time: "", activity: "&nbsp;&nbsp;&nbsp;ОПЦИЯ Е: Мемориальный музей-квартира Максима Богдановича — жилище поэта, личные вещи, литературные реликвии", type: "option", place: "Мемориальный музей-квартира Максима Богдановича", city: "Минск" },
-                    { time: "12:00-13:30", activity: "Обед в центре города", type: "meal" },
-                    { time: "13:30-16:00", activity: "АКТИВНОСТИ НА ВЫБОР:", type: "section" },
-                    { time: "", activity: "&nbsp;&nbsp;&nbsp;ВАРИАНТ А: Шопинг в торговых центрах (сувениры, традиционные ремесла)", type: "option", place: "ТЦ Минск-Сити", city: "Минск" },
-                    { time: "", activity: "&nbsp;&nbsp;&nbsp;ВАРИАНТ Б: Прогулка по Троицкому предместью (музейные лавки, сувениры, традиционные кафе)", type: "option", place: "Троицкое предместье", city: "Минск" },
-                    { time: "", activity: "&nbsp;&nbsp;&nbsp;ВАРИАНТ В: Спа-услуги и массаж (расслабление перед вечером)", type: "option", place: "Спа-центр", city: "Минск" },
-                    { time: "", activity: "&nbsp;&nbsp;&nbsp;ВАРИАНТ Г: Развлекательные центры", type: "option", place: "Боулинг Минск", city: "Минск" },
-                    { time: "", activity: "&nbsp;&nbsp;&nbsp;ВАРИАНТ Д: Кулинарный мастер-класс белорусской кухни", type: "option", place: "Кулинарный мастер-класс Минск", city: "Минск" },
-                    { time: "", activity: "&nbsp;&nbsp;&nbsp;ВАРИАНТ Е: Экскурсия на фабрику белорусских конфет", type: "option", place: "Красный пищевик", city: "Минск" },
-                    { time: "16:00-17:00", activity: "Отдых в отеле", type: "activity" },
-                    { time: "17:00-19:00", activity: "Подготовка к праздничному ужину", type: "activity" },
-                    { time: "19:00-22:30", activity: "🎂 ПРАЗДНИЧНЫЙ УЖИН в ресторане Литсвины (авторская белорусская кухня, спецпредложение ко дню рождения, шампанское, торт)", type: "birthday", restaurant: "Литсвины" },
-                    { time: "22:30", activity: "Возврат в отель", type: "birthday" }
-                ],
-                accommodation: "Минск, центр",
-                restaurants: [
-                    { name: "Кафе Троицкого предместья", cuisine: "Традиционная белорусская", notes: "Для дневного обеда", city: "Минск" },
-                    { name: "Пекарня Хлеб насущный", cuisine: "Хлебобулочные изделия и традиционные блюда", notes: "По желанию для обеда", city: "Минск" },
-                    { name: "Литсвины", cuisine: "Авторская белорусская кухня", notes: "🎂 ПРАЗДНИЧНЫЙ УЖИН — День рождения 19:00-22:30. Специальное меню, шампанское, торт. Рекомендуется для 4 человек.", city: "Минск", isBirthdayChoice: true }
-                ],
-                alternatives: [
-                    { name: "Национальная художественная галерея", description: "Шедевры белорусского и европейского искусства, средневековые иконы", city: "Минск" },
-                    { name: "Национальный музей истории и культуры", description: "Древние артефакты, этнография, традиционная культура", city: "Минск" },
-                    { name: "Музей современного искусства", description: "Выставки, инсталляции, экспериментальное искусство", city: "Минск" },
-                    { name: "Национальная библиотека Беларуси", description: "Современная архитектура, обзорная площадка, выставки", city: "Минск" },
-                    { name: "Троицкое предместье", description: "Старый город, музейные лавки, сувенирные магазины, уютные кафе", city: "Минск" },
-                    { name: "ТЦ Минск-Сити", description: "Современный торговый центр, сувениры, белорусские товары", city: "Минск" },
-                    { name: "Красный пищевик", description: "Экскурсия на фабрику белорусских конфет с дегустацией", city: "Минск" },
-                    { name: "Облепиха", description: "Кондитерская фабрика с экскурсиями", city: "Минск" }
-                ],
-                events: [
-                    { name: "Выставки в музеях Минска", time: "09:00-18:00", place: "Музеи Минска", type: "Выставка", price: "По прейскуранту музеев", city: "Минск" },
-                    { name: "Концерты в Минске (вечерние)", time: "19:00-22:00", place: "Концертные площадки Минска", type: "Концерт", price: "TBD", city: "Минск" },
-                    { name: "Театральные представления", time: "19:00-22:00", place: "Театры Минска", type: "Театр", price: "TBD", city: "Минск" }
-                ]
-            },
-            {
-                day: 6,
-                date: "16 ноября",
-                title: "Минск → Витебск (Искусство & Культура)",
-                attractions: [
-                    { name: "Ратуша Витебска", city: "Витебск" },
-                    { name: "Успенский собор", city: "Витебск" },
-                    { name: "Музей и арт-центр Марка Шагала", city: "Витебск", wiki: true },
-                    { name: "Усадьба Ильи Репина", city: "Витебск", wiki: true }
-                ],
-                accommodation: "Витебск, центр города",
-                restaurants: [
-                    { name: "Местные рестораны Витебска", cuisine: "Традиционная белорусская кухня", notes: "Историческая атмосфера с аутентичными блюдами", city: "Витебск" }
-                ],
-                alternatives: [
-                    { name: "Миорские озёра", description: "Менее туристическая альтернатива Браславским озёрам", city: "Миорский район" },
-                    { name: "Голубые озера", description: "Белорусская Швейцария с 13 озёрами", city: "Витебская область" },
-                    { name: "Полоцк", description: "Исторический город в 120 км от Витебска", city: "Полоцк" }
-                ],
-                travel: { distance: "Минск → Витебск: 290 км", time: "3 ч 30 мин в пути" },
-                events: [
-                    { name: "Концерты и выставки в Витебске", time: "19:00-21:00", place: "КЗ Витебск, Филармония", type: "Культурные мероприятия", price: "TBD", city: "Витебск" }
-                ]
-            },
-            {
-                day: 7,
-                date: "17 ноября",
-                title: "Витебск → Полоцк (Древняя столица) → Минск",
-                timeline: [
-                    { time: "08:00", activity: "Завтрак и подготовка к выезду", type: "meal" },
-                    { time: "08:30", activity: "Выезд в Полоцк", type: "travel" },
-                    { time: "10:00", activity: "Прибытие в Полоцк", type: "travel" },
-                    { time: "10:15-13:00", activity: "🏛️ ОПЦИЯ А: Софийский собор (XI век) - Музей истории архитектуры, фрески XI века, концерт органной музыки", type: "activity", place: "Софийский собор", city: "Полоцк" },
-                    { time: "10:15-13:00", activity: "📚 ОПЦИЯ Б: Музей белорусского книгопечатания (15 залов, 2500 экспонатов, история письменности)", type: "activity", place: "Музей белорусского книгопечатания", city: "Полоцк" },
-                    { time: "10:15-13:00", activity: "📖 ОПЦИЯ В: Музей-библиотека Симеона Полоцкого (средневековая библиотека, редкие рукописи, самый большой глобус Беларуси)", type: "activity", place: "Музей-библиотека Симеона Полоцкого", city: "Полоцк" },
-                    { time: "10:15-13:00", activity: "⚔️ ОПЦИЯ Г: Музей средневекового рыцарства (доспехи, оружие, интерьеры XI-XVI веков)", type: "activity", place: "Музей средневекового рыцарства", city: "Полоцк" },
-                    { time: "10:15-13:00", activity: "👶 ОПЦИЯ Д: Детский музей (интерактивный, 1000+ экспонатов - часы, колокольчики, весы, механика)", type: "activity", place: "Детский музей", city: "Полоцк" },
-                    { time: "10:15-13:00", activity: "🌿 ОПЦИЯ Е: Природно-экологический музей в водонапорной башне (4 уровня, панорама города)", type: "activity", place: "Природно-экологический музей", city: "Полоцк" },
-                    { time: "13:00-14:00", activity: "🍽️ Обед в ресторане Полоцка", type: "meal" },
-                    { time: "14:00-14:30", activity: "⛪ Краткая пешеходная экскурсия: Спасо-Ефросиниевский монастырь (XII век, мощи святой Евфросинии)", type: "activity", place: "Спасо-Ефросиниевский монастырь", city: "Полоцк" },
-                    { time: "14:30-15:00", activity: "🏘️ Нижне-Покровская улица - самая старая улица Полоцка (XVII-XX века)", type: "activity", place: "Нижне-Покровская улица", city: "Полоцк" },
-                    { time: "15:00-15:30", activity: "🏰 Верхний замок - оборонительные валы со времен Ливонской войны", type: "activity", place: "Верхний замок", city: "Полоцк" },
-                    { time: "15:30-18:30", activity: "🚗 Дорога в Минск (280 км, 3 часа)", type: "travel" },
-                    { time: "18:30", activity: "🏙️ Прибытие в Минск", type: "travel" },
-                    { time: "19:00", activity: "🏨 Заселение в отель возле аэропорта", type: "activity" },
-                    { time: "19:00-22:00", activity: "🎬 Вечер в кинотеатре или концерт", type: "activity" },
-                    { time: "22:00", activity: "🍽️ Прощальный ужин", type: "meal" }
-                ],
-                attractions: [
-                    { name: "Софийский собор", city: "Полоцк", type: "XI век" },
-                    { name: "Спасо-Ефросиниевский монастырь", city: "Полоцк", type: "XII век" },
-                    { name: "Нижне-Покровская улица", city: "Полоцк" },
-                    { name: "Верхний замок", city: "Полоцк" }
-                ],
-                accommodation: "Гостиница Полоцк или Малая Прага (центр города)",
-                accommodationLinks: [
-                    { name: "Гостиница Полоцк", city: "Полоцк" },
-                    { name: "Малая Прага", city: "Полоцк" }
-                ],
-                restaurants: [
-                    { name: "Кафе гостиницы Полоцк", cuisine: "Традиционная белорусская кухня", notes: "Исторический центр, аутентичные блюда", city: "Полоцк" },
-                    { name: "Прощальный ужин в Минске", cuisine: "Белорусская", notes: "Вечером после возвращения", city: "Минск" }
-                ],
-                alternatives: [
-                    { name: "Художественная галерея Полоцка", description: "Картины XVII-XIX века, иконы, современное искусство, мастер-классы", city: "Полоцк" },
-                    { name: "Дом Петра I", description: "Здание 1692 года, стиль барокко, исторический музей", city: "Полоцк" },
-                    { name: "Борисов камень", description: "Памятник XII века с древнерусскими надписями", city: "Полоцк" },
-                    { name: "Красный мост", description: "Мемориал битвы 1812 года", city: "Полоцк" }
-                ],
-                travel: { leg1: "Витебск → Полоцк: 70 км, 1 ч 15 мин", leg2: "Полоцк → Минск: 280 км, 3 ч", total: "350 км, 4 ч 15 мин всего" },
-                events: [
-                    { name: "Органные концерты в Софийском соборе", time: "11:00-12:00", place: "Софийский собор", type: "Органная музыка", price: "TBD", city: "Полоцк" },
-                    { name: "Выставки в художественной галерее", time: "10:00-18:00", place: "Художественная галерея Полоцка", type: "Выставка", price: "TBD", city: "Полоцк" },
-                    { name: "Экскурсии по историческому центру", time: "14:00-16:00", place: "Исторический центр Полоцка", type: "Экскурсия", price: "TBD", city: "Полоцк" },
-                    { name: "Кино или концерт в Минске вечером", time: "19:00-22:00", place: "Кинотеатр или концертный зал Минска", type: "Развлечение", price: "TBD", city: "Минск" }
-                ]
-            },
-            {
-                day: 8,
-                date: "18 ноября",
-                title: "Отъезд",
-                isDeparture: true,
-                travel: { distance: "~25 км от города до аэропорта", time: "~45 мин" },
-                alternatives: []
-            }
-        ];
+<div class="section-label">Суперсет — выполнять без отдыха между упражнениями</div>
+<div class="superset-badge"><i class="ti ti-refresh" aria-hidden="true"></i> Суперсет A</div>
 
-        let currentDay = 0;
+<div class="card" onclick="toggle(this)">
+  <div class="card-header">
+    <div class="num">2a</div>
+    <div class="card-title">
+      <div class="name">Тяга штанги обратным хватом</div>
+      <div class="sets">3 подхода × 10 повторов</div>
+    </div>
+    <i class="ti ti-chevron-down chevron" aria-hidden="true"></i>
+  </div>
+  <div class="card-body">
+    <div class="machine-block">
+      <i class="ti ti-barbell machine-icon" aria-hidden="true"></i>
+      <div class="machine-text">
+        <strong>Свободные веса — штанга на полу или в стойке</strong>
+        Обратный хват (ладони смотрят вверх, супинация). Подбери вес так, чтобы 10 повторов были сложными, но с правильной техникой.
+      </div>
+    </div>
+    <div class="section-title">Техника выполнения</div>
+    <ul class="steps">
+      <li><span class="step-num">1</span>Хват снизу чуть уже плеч. Ноги на ширине таза, лёгкий наклон вперёд ~45°.</li>
+      <li><span class="step-num">2</span>Спина прямая, поясница в нейтральном положении, не горбись.</li>
+      <li><span class="step-num">3</span>Тяни штангу к поясу — локти вдоль тела, уходят назад.</li>
+      <li><span class="step-num">4</span>В верхней точке сожми лопатки и задержись на 1 секунду.</li>
+      <li><span class="step-num">5</span>Медленно опускай штангу до полного вытяжения рук.</li>
+    </ul>
+    <div class="section-title">Ключевые ошибки</div>
+    <div class="tips">
+      <div class="tip"><i class="ti ti-check" aria-hidden="true"></i>Не рывком — контролируй движение на протяжении всего подхода</div>
+      <div class="tip"><i class="ti ti-check" aria-hidden="true"></i>Спина не должна скруглиться — грудь смотрит чуть вниз</div>
+    </div>
+    <div class="section-title">Работающие мышцы</div>
+    <div class="muscles">
+      <span class="muscle-tag">Широчайшие</span><span class="muscle-tag">Ромбовидные</span><span class="muscle-tag">Бицепс</span><span class="muscle-tag">Задний пучок дельты</span>
+    </div>
+  </div>
+</div>
 
-        function createPlaceLink(name, city) {
-            const searchQuery = encodeURIComponent(`${name} ${city} Беларусь`);
-            return `<a href="https://www.google.com/maps/search/?api=1&query=${searchQuery}" target="_blank" class="place-link">${name}</a>`;
-        }
+<div class="card" onclick="toggle(this)">
+  <div class="card-header">
+    <div class="num">2b</div>
+    <div class="card-title">
+      <div class="name">Тяга гантели к поясу</div>
+      <div class="sets">3 подхода × 10 повторов (каждой рукой)</div>
+    </div>
+    <i class="ti ti-chevron-down chevron" aria-hidden="true"></i>
+  </div>
+  <div class="card-body">
+    <div class="machine-block">
+      <i class="ti ti-barbell machine-icon" aria-hidden="true"></i>
+      <div class="machine-text">
+        <strong>Гантель + скамья</strong>
+        Одна рука и колено опираются на скамью. Свободная рука держит гантель. Это одностороннее упражнение — выполняй поочерёдно.
+      </div>
+    </div>
+    <div class="section-title">Техника выполнения</div>
+    <ul class="steps">
+      <li><span class="step-num">1</span>Правое колено и правая ладонь на скамье. Спина горизонтальна полу.</li>
+      <li><span class="step-num">2</span>Левой рукой возьми гантель — рука опущена прямо вниз.</li>
+      <li><span class="step-num">3</span>Тяни гантель к поясу — локоть идёт строго вверх и назад.</li>
+      <li><span class="step-num">4</span>В верхней точке — лопатка сжата, задержись секунду.</li>
+      <li><span class="step-num">5</span>Плавно опусти до вытяжения. Повтори, затем смени руку.</li>
+    </ul>
+    <div class="section-title">Ключевые ошибки</div>
+    <div class="tips">
+      <div class="tip"><i class="ti ti-check" aria-hidden="true"></i>Не поворачивай плечо вверх — держи корпус параллельно полу</div>
+      <div class="tip"><i class="ti ti-check" aria-hidden="true"></i>Не бросай гантель вниз — контролируй негативную фазу</div>
+    </div>
+    <div class="section-title">Работающие мышцы</div>
+    <div class="muscles">
+      <span class="muscle-tag">Широчайшие</span><span class="muscle-tag">Трапеция</span><span class="muscle-tag">Бицепс</span><span class="muscle-tag">Задняя дельта</span>
+    </div>
+  </div>
+</div>
 
-        function createRestaurantLink(name, city) {
-            const searchQuery = encodeURIComponent(`${name} ресторан ${city} Беларусь`);
-            return `<a href="https://www.google.com/search?q=${searchQuery}" target="_blank" class="restaurant-link">${name}</a>`;
-        }
+<div class="section-label">Изоляция спины</div>
 
-        function createHotelLink(name, city) {
-            const searchQuery = encodeURIComponent(`${name} отель ${city} Беларусь`);
-            return `<a href="https://www.google.com/maps/search/?api=1&query=${searchQuery}" target="_blank" class="hotel-link">${name}</a>`;
-        }
+<div class="card" onclick="toggle(this)">
+  <div class="card-header">
+    <div class="num">3</div>
+    <div class="card-title">
+      <div class="name">Вертикальная тяга в хаммере</div>
+      <div class="sets">4 подхода: 15 / 12 / 10 / 8+8+8 (дроп-сет)</div>
+    </div>
+    <i class="ti ti-chevron-down chevron" aria-hidden="true"></i>
+  </div>
+  <div class="card-body">
+    <div class="machine-block">
+      <i class="ti ti-device-desktop-analytics machine-icon" aria-hidden="true"></i>
+      <div class="machine-text">
+        <strong>Hammer Strength — тяга сверху вниз</strong>
+        Силовой тренажёр с независимыми рукоятями под каждую руку. Сиди лицом к машине. На некоторых моделях — горизонтальная версия.
+      </div>
+    </div>
+    <div class="section-title">Техника выполнения</div>
+    <ul class="steps">
+      <li><span class="step-num">1</span>Сядь, упри грудь в подушку. Возьмись за рукояти сверху (нейтральный хват).</li>
+      <li><span class="step-num">2</span>Потяни рукояти вниз и к себе, локти уходят вниз вдоль тела.</li>
+      <li><span class="step-num">3</span>В нижней точке — лопатки максимально сжаты, секундная пауза.</li>
+      <li><span class="step-num">4</span>Медленно вернись в исходное положение.</li>
+    </ul>
+    <div class="drop-note"><strong>Дроп-сет (последний подход 8+8+8):</strong> сделай 8 повторов, сразу сбрось вес на ~20%, ещё 8 повторов, снова сброс — ещё 8. Без отдыха между снижениями.</div>
+    <div class="section-title">Работающие мышцы</div>
+    <div class="muscles">
+      <span class="muscle-tag">Широчайшие</span><span class="muscle-tag">Большая круглая</span><span class="muscle-tag">Бицепс</span>
+    </div>
+  </div>
+</div>
 
-        function createWikiLink(name) {
-            if (name.includes('Шагала')) {
-                return `<a href="https://ru.wikipedia.org/wiki/Музей_Марка_Шагала_(Витебск)" target="_blank" class="place-link">${name}</a>`;
-            } else if (name.includes('Репина')) {
-                return `<a href="https://ru.wikipedia.org/wiki/Музей-усадьба_И._Е._Репина_«Здравнёво»" target="_blank" class="place-link">${name}</a>`;
-            }
-            return name;
-        }
+<div class="card" onclick="toggle(this)">
+  <div class="card-header">
+    <div class="num">4</div>
+    <div class="card-title">
+      <div class="name">Пуловер в кроссовере</div>
+      <div class="sets">3 подхода × 15 повторов</div>
+    </div>
+    <i class="ti ti-chevron-down chevron" aria-hidden="true"></i>
+  </div>
+  <div class="card-body">
+    <div class="machine-block">
+      <i class="ti ti-arrows-down-up machine-icon" aria-hidden="true"></i>
+      <div class="machine-text">
+        <strong>Кроссовер (Cable Machine) — верхний блок</strong>
+        Блочная стойка с тросом, идущим сверху. Прикрепи прямую рукоять или верёвку. Встань спиной к стойке или лицом — зависит от варианта.
+      </div>
+    </div>
+    <div class="section-title">Техника выполнения</div>
+    <ul class="steps">
+      <li><span class="step-num">1</span>Встань лицом к верхнему блоку, возьмись за прямую рукоять прямым хватом.</li>
+      <li><span class="step-num">2</span>Слегка наклони корпус вперёд, руки подняты перед собой.</li>
+      <li><span class="step-num">3</span>Прямые (чуть согнутые) руки тяни дугой вниз — к бёдрам.</li>
+      <li><span class="step-num">4</span>В нижней точке сожми широчайшие. Медленно возвращайся вверх.</li>
+    </ul>
+    <div class="section-title">Ключевые ошибки</div>
+    <div class="tips">
+      <div class="tip"><i class="ti ti-check" aria-hidden="true"></i>Руки не сгибай сильно — это не жим, а дуговое движение</div>
+      <div class="tip"><i class="ti ti-check" aria-hidden="true"></i>Не помогай корпусом — движение только в плечевом суставе</div>
+    </div>
+    <div class="section-title">Работающие мышцы</div>
+    <div class="muscles">
+      <span class="muscle-tag">Широчайшие</span><span class="muscle-tag">Большая грудная</span><span class="muscle-tag">Трицепс (длинная голова)</span>
+    </div>
+  </div>
+</div>
 
-        function renderDay(dayIndex) {
-            const day = daysData[dayIndex];
-            const content = document.getElementById('dayContent');
-            
-            let html = `<div class="day-card ${day.isBirthday ? 'birthday' : ''}">`;
-            html += `<h2 class="day-title">${day.title}</h2>`;
-            html += `<p class="day-date">${day.date}</p>`;
+<div class="section-label">Суперсет — плечи</div>
+<div class="superset-badge"><i class="ti ti-refresh" aria-hidden="true"></i> Суперсет B</div>
 
-            // Timeline
-            if (day.timeline && day.timeline.length > 0) {
-                html += `<div class="section">`;
-                html += `<h3 class="section-title">Расписание</h3>`;
-                day.timeline.forEach(item => {
-                    html += `<div class="timeline-item">`;
-                    html += `<div class="timeline-time">${item.time}</div>`;
-                    html += `<div class="timeline-activity">${item.activity}`;
-                    
-                    if (item.place) {
-                        html += ` - ${createPlaceLink(item.place, item.city || '')}`;
-                    }
-                    
-                    if (item.places) {
-                        html += '<br>';
-                        item.places.forEach((place, idx) => {
-                            html += createPlaceLink(place.name, place.city);
-                            if (idx < item.places.length - 1) html += ', ';
-                        });
-                    }
-                    
-                    if (item.restaurant) {
-                        html += ` - ${createRestaurantLink(item.restaurant, 'Минск')}`;
-                    }
-                    
-                    if (item.hotels) {
-                        html += '<br>Отели: ';
-                        item.hotels.forEach((hotel, idx) => {
-                            html += createHotelLink(hotel, 'Гродно');
-                            if (idx < item.hotels.length - 1) html += ' или ';
-                        });
-                    }
-                    
-                    if (item.restaurants) {
-                        html += '<br>Рестораны: ';
-                        item.restaurants.forEach((rest, idx) => {
-                            html += createRestaurantLink(rest, 'Гродно');
-                            if (idx < item.restaurants.length - 1) html += ' или ';
-                        });
-                    }
-                    
-                    html += `</div>`;
-                    html += `</div>`;
-                });
-                html += `</div>`;
-            }
+<div class="card" onclick="toggle(this)">
+  <div class="card-header">
+    <div class="num">5a</div>
+    <div class="card-title">
+      <div class="name">Жим Арнольда</div>
+      <div class="sets">4 подхода × 10 повторов</div>
+    </div>
+    <i class="ti ti-chevron-down chevron" aria-hidden="true"></i>
+  </div>
+  <div class="card-body">
+    <div class="machine-block">
+      <i class="ti ti-barbell machine-icon" aria-hidden="true"></i>
+      <div class="machine-text">
+        <strong>Гантели — сидя или стоя</strong>
+        Авторский жим от Арнольда Шварценеггера. Сочетает пронацию и жим — прорабатывает все три пучка дельты. Выполняй сидя на скамье с поддержкой спины.
+      </div>
+    </div>
+    <div class="section-title">Техника выполнения</div>
+    <ul class="steps">
+      <li><span class="step-num">1</span>Стартовая позиция: гантели у плеч, ладони смотрят на тебя (как в конце подъёма на бицепс).</li>
+      <li><span class="step-num">2</span>Начни жать вверх и одновременно разворачивай кисти наружу.</li>
+      <li><span class="step-num">3</span>В верхней точке ладони смотрят вперёд, руки почти прямые.</li>
+      <li><span class="step-num">4</span>Опускай с обратным разворотом — возвращай ладони к себе.</li>
+    </ul>
+    <div class="section-title">Ключевые ошибки</div>
+    <div class="tips">
+      <div class="tip"><i class="ti ti-check" aria-hidden="true"></i>Не жми сверхтяжело — важна амплитуда вращения</div>
+      <div class="tip"><i class="ti ti-check" aria-hidden="true"></i>Не разводи локти слишком широко в нижней точке</div>
+    </div>
+    <div class="section-title">Работающие мышцы</div>
+    <div class="muscles">
+      <span class="muscle-tag">Все 3 пучка дельты</span><span class="muscle-tag">Трицепс</span><span class="muscle-tag">Трапеция</span>
+    </div>
+  </div>
+</div>
 
-            // Attractions
-            if (day.attractions && day.attractions.length > 0) {
-                html += `<div class="section">`;
-                html += `<h3 class="section-title">Достопримечательности</h3>`;
-                day.attractions.forEach(attr => {
-                    html += `<div class="info-item">`;
-                    if (attr.wiki) {
-                        html += createWikiLink(attr.name);
-                    } else {
-                        html += createPlaceLink(attr.name, attr.city);
-                    }
-                    if (attr.type === 'UNESCO') {
-                        html += ' <span style="color: #d4af37;">★ ЮНЕСКО</span>';
-                    }
-                    html += `</div>`;
-                });
-                html += `</div>`;
-            }
+<div class="card" onclick="toggle(this)">
+  <div class="card-header">
+    <div class="num">5b</div>
+    <div class="card-title">
+      <div class="name">Махи вперёд и в стороны</div>
+      <div class="sets">4 подхода × 10+10 повторов</div>
+    </div>
+    <i class="ti ti-chevron-down chevron" aria-hidden="true"></i>
+  </div>
+  <div class="card-body">
+    <div class="machine-block">
+      <i class="ti ti-barbell machine-icon" aria-hidden="true"></i>
+      <div class="machine-text">
+        <strong>Лёгкие гантели — стоя</strong>
+        10 махов вперёд + сразу 10 в стороны без паузы. Это одна серия. Бери лёгкий вес — 4–8 кг, техника важнее веса.
+      </div>
+    </div>
+    <div class="section-title">Махи вперёд (передняя дельта)</div>
+    <ul class="steps">
+      <li><span class="step-num">1</span>Гантели перед бёдрами, ладони смотрят вниз или друг на друга.</li>
+      <li><span class="step-num">2</span>Поднимай прямые руки вперёд до уровня плеч (90°). Не выше.</li>
+      <li><span class="step-num">3</span>Медленно опускай — не бросай вниз.</li>
+    </ul>
+    <div class="section-title">Махи в стороны (средняя дельта)</div>
+    <ul class="steps">
+      <li><span class="step-num">1</span>Гантели по бокам, ладони вниз, небольшой наклон корпуса вперёд.</li>
+      <li><span class="step-num">2</span>Разводи руки в стороны до параллели с полом. Локоть чуть выше кисти.</li>
+      <li><span class="step-num">3</span>Задержись на секунду вверху. Медленно опускай.</li>
+    </ul>
+    <div class="section-title">Работающие мышцы</div>
+    <div class="muscles">
+      <span class="muscle-tag">Передняя дельта</span><span class="muscle-tag">Средняя дельта</span><span class="muscle-tag">Трапеция (стабилизатор)</span>
+    </div>
+  </div>
+</div>
 
-            // Travel info
-            if (day.travel) {
-                html += `<div class="section">`;
-                html += `<h3 class="section-title">Информация о маршруте</h3>`;
-                html += `<div class="info-item">`;
-                if (day.travel.leg1) html += `<div><span class="info-label">Маршрут 1:</span>${day.travel.leg1}</div>`;
-                if (day.travel.leg2) html += `<div><span class="info-label">Маршрут 2:</span>${day.travel.leg2}</div>`;
-                if (day.travel.leg3) html += `<div><span class="info-label">Маршрут 3:</span>${day.travel.leg3}</div>`;
-                if (day.travel.total) html += `<div style="margin-top: var(--space-8); padding-top: var(--space-8); border-top: 1px solid var(--color-border-light);"><span class="info-label">Всего:</span>${day.travel.total}</div>`;
-                if (day.travel.distance) html += `<div><span class="info-label">Расстояние:</span>${day.travel.distance}</div>`;
-                if (day.travel.time) html += `<div><span class="info-label">Время в пути:</span>${day.travel.time}</div>`;
-                if (day.travel.route) html += `<div><span class="info-label">Маршрут:</span>${day.travel.route}</div>`;
-                html += `</div>`;
-                html += `</div>`;
-            }
+<div class="section-label">Финишер</div>
 
-            // Accommodation
-            if (day.accommodation) {
-                html += `<div class="section">`;
-                html += `<h3 class="section-title">Размещение</h3>`;
-                html += `<div class="info-item">`;
-                if (day.accommodationLinks && day.accommodationLinks.length > 0) {
-                    day.accommodationLinks.forEach((hotel, idx) => {
-                        html += createHotelLink(hotel.name, hotel.city);
-                        if (idx < day.accommodationLinks.length - 1) html += ' или ';
-                    });
-                } else {
-                    html += day.accommodation;
-                }
-                html += `</div>`;
-                html += `</div>`;
-            }
+<div class="card" onclick="toggle(this)">
+  <div class="card-header">
+    <div class="num">6</div>
+    <div class="card-title">
+      <div class="name">Отведение на заднюю дельту в тренажёре</div>
+      <div class="sets">4 подхода × 10 повторов</div>
+    </div>
+    <i class="ti ti-chevron-down chevron" aria-hidden="true"></i>
+  </div>
+  <div class="card-body">
+    <div class="machine-block">
+      <i class="ti ti-device-desktop-analytics machine-icon" aria-hidden="true"></i>
+      <div class="machine-text">
+        <strong>«Бабочка» наоборот / Pec Deck Rear Delt</strong>
+        Тот же тренажёр, что для сведения рук на грудь — но ты садишься лицом к подушке. Разворачивай рукояти горизонтально или бери внешние ручки.
+      </div>
+    </div>
+    <div class="section-title">Техника выполнения</div>
+    <ul class="steps">
+      <li><span class="step-num">1</span>Сядь лицом к подушке тренажёра. Возьмись за горизонтальные рукоятки.</li>
+      <li><span class="step-num">2</span>Отводи руки назад и в стороны — как будто хочешь соединить лопатки.</li>
+      <li><span class="step-num">3</span>В крайней точке — пауза 1 секунду, лопатки максимально сжаты.</li>
+      <li><span class="step-num">4</span>Медленно возвращай вперёд, сопротивляясь весу.</li>
+    </ul>
+    <div class="section-title">Ключевые ошибки</div>
+    <div class="tips">
+      <div class="tip"><i class="ti ti-check" aria-hidden="true"></i>Не сгибай руки в локтях — держи их почти прямыми</div>
+      <div class="tip"><i class="ti ti-check" aria-hidden="true"></i>Не помогай корпусом — только руки и плечевой сустав</div>
+      <div class="tip"><i class="ti ti-check" aria-hidden="true"></i>Вес небольшой — лучше качественное сокращение, чем большой вес с читингом</div>
+    </div>
+    <div class="section-title">Работающие мышцы</div>
+    <div class="muscles">
+      <span class="muscle-tag">Задняя дельта</span><span class="muscle-tag">Ромбовидные</span><span class="muscle-tag">Трапеция (средняя)</span>
+    </div>
+  </div>
+</div>
 
-            // Restaurants
-            if (day.restaurants && day.restaurants.length > 0) {
-                html += `<div class="section">`;
-                html += `<h3 class="section-title">Заведения питания</h3>`;
-                day.restaurants.forEach(rest => {
-                    html += `<div class="restaurant-item">`;
-                    html += `<div class="restaurant-name">${createRestaurantLink(rest.name, rest.city)}</div>`;
-                    html += `<div class="restaurant-cuisine">${rest.cuisine}</div>`;
-                    if (rest.notes) {
-                        html += `<div class="restaurant-notes">${rest.notes}</div>`;
-                    }
-                    html += `</div>`;
-                });
-                html += `</div>`;
-            }
+</div>
 
-            // Alternatives
-            if (day.alternatives && day.alternatives.length > 0) {
-                html += `<div class="section">`;
-                html += `<h3 class="section-title">Альтернативные варианты</h3>`;
-                day.alternatives.forEach(alt => {
-                    html += `<div class="info-item">`;
-                    html += `<strong>${createPlaceLink(alt.name, alt.city)}</strong>`;
-                    if (alt.description) {
-                        html += ` — ${alt.description}`;
-                    }
-                    html += `</div>`;
-                });
-                html += `</div>`;
-            }
-
-            // Events Section
-            if (day.events && day.events.length > 0) {
-                html += `<div class="section">`;
-                html += `<h3 class="section-title">Рекомендуемые мероприятия</h3>`;
-                html += `<table class="event-table">`;
-                html += `<thead><tr><th>Мероприятие</th><th>Время</th><th>Место</th><th>Тип</th></tr></thead>`;
-                html += `<tbody>`;
-                day.events.forEach(event => {
-                    html += `<tr>`;
-                    html += `<td>${createPlaceLink(event.name, event.city)}</td>`;
-                    html += `<td>${event.time}</td>`;
-                    html += `<td>${createPlaceLink(event.place, event.city)}</td>`;
-                    html += `<td>${event.type}</td>`;
-                    html += `</tr>`;
-                });
-                html += `</tbody></table>`;
-                html += `</div>`;
-            }
-
-            html += `</div>`;
-            content.innerHTML = html;
-
-            // Update navigation
-            updateNavigation();
-        }
-
-        function updateNavigation() {
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const dayIndicator = document.getElementById('dayIndicator');
-            const progressFill = document.getElementById('progressFill');
-
-            dayIndicator.textContent = `Маршрут: День ${currentDay + 1} из ${daysData.length}`;
-            
-            prevBtn.disabled = currentDay === 0;
-            nextBtn.disabled = currentDay === daysData.length - 1;
-
-            // Change next button text for last day
-            if (currentDay === daysData.length - 1) {
-                nextBtn.textContent = 'Завершение';
-                nextBtn.classList.add('btn-done');
-            } else {
-                nextBtn.textContent = 'Следующий ▶';
-                nextBtn.classList.remove('btn-done');
-            }
-
-            // Update progress bar
-            const progress = ((currentDay + 1) / daysData.length) * 100;
-            progressFill.style.width = progress + '%';
-        }
-
-        function changeDay(direction) {
-            const newDay = currentDay + direction;
-            if (newDay >= 0 && newDay < daysData.length) {
-                currentDay = newDay;
-                renderDay(currentDay);
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        }
-
-        // Initialize
-        renderDay(currentDay);
-    </script>
-</body>
-</html>
+<script>
+function toggle(card) {
+  card.classList.toggle('open');
+}
+</script>
