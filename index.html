@@ -1,356 +1,988 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="utf-8">
-    <title>День 1 — спина и плечи</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161618" media="(prefers-color-scheme: dark)">
+<title>Программа DDX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: var(--font-sans); }
-.wrap { padding: 1rem 0; }
-.header { margin-bottom: 1.5rem; }
-.header h2 { font-size: 18px; font-weight: 500; color: var(--color-text-primary); }
-.header p { font-size: 13px; color: var(--color-text-secondary); margin-top: 4px; }
-.section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-tertiary); margin: 1.5rem 0 0.5rem; }
-.superset-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 500; background: #FAEEDA; color: #633806; border-radius: 4px; padding: 2px 8px; margin-bottom: 6px; }
-.card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); margin-bottom: 8px; overflow: hidden; cursor: pointer; transition: border-color 0.15s; }
-.card:hover { border-color: var(--color-border-secondary); }
-.card.open { border-color: var(--color-border-secondary); }
-.card-header { display: flex; align-items: center; gap: 12px; padding: 14px 16px; }
-.num { width: 28px; height: 28px; border-radius: 50%; background: var(--color-background-secondary); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; color: var(--color-text-secondary); flex-shrink: 0; }
-.card-title { flex: 1; }
-.card-title .name { font-size: 14px; font-weight: 500; color: var(--color-text-primary); }
-.card-title .sets { font-size: 12px; color: var(--color-text-secondary); margin-top: 2px; }
-.chevron { color: var(--color-text-tertiary); font-size: 16px; transition: transform 0.2s; }
-.card.open .chevron { transform: rotate(180deg); }
-.card-body { padding: 0 16px 16px; display: none; border-top: 0.5px solid var(--color-border-tertiary); }
-.card.open .card-body { display: block; }
-.section-title { font-size: 12px; font-weight: 500; color: var(--color-text-secondary); margin: 12px 0 6px; }
-.machine-block { display: flex; align-items: flex-start; gap: 10px; background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 10px 12px; margin-bottom: 10px; }
-.machine-icon { font-size: 20px; color: var(--color-text-secondary); flex-shrink: 0; margin-top: 1px; }
-.machine-text { font-size: 13px; color: var(--color-text-primary); line-height: 1.5; }
-.machine-text strong { font-weight: 500; display: block; margin-bottom: 2px; }
-.steps { list-style: none; }
-.steps li { display: flex; gap: 10px; font-size: 13px; color: var(--color-text-primary); line-height: 1.5; padding: 4px 0; border-bottom: 0.5px solid var(--color-border-tertiary); }
-.steps li:last-child { border-bottom: none; }
-.step-num { width: 18px; height: 18px; border-radius: 50%; background: var(--color-background-info); color: var(--color-text-info); font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
-.tips { display: flex; flex-direction: column; gap: 6px; }
-.tip { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; color: var(--color-text-primary); line-height: 1.5; }
-.tip i { color: #1D9E75; flex-shrink: 0; margin-top: 2px; }
-.muscles { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
-.muscle-tag { font-size: 12px; background: var(--color-background-secondary); color: var(--color-text-secondary); padding: 3px 10px; border-radius: 20px; border: 0.5px solid var(--color-border-tertiary); }
-.drop-note { font-size: 12px; color: var(--color-text-secondary); background: #FAEEDA; border-radius: 4px; padding: 6px 10px; margin-top: 8px; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#ffffff;--bg2:#f5f5f7;--bg3:#e8e8ea;
+  --text:#1a1a1a;--text2:#5a5a60;--text3:#929298;
+  --border:rgba(0,0,0,0.09);--border2:rgba(0,0,0,0.16);
+  --accent:#0071e3;--accent-bg:#e8f2fd;--accent-txt:#003d82;
+  --green:#0a8a5c;--green-bg:#e6f7f0;
+  --amber-bg:#faeeda;--amber-txt:#5c3200;
+  --red-bg:#fdeaea;--red-txt:#8b1a1a;
+  --r:12px;--rs:8px;--rx:16px;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#161618;--bg2:#242428;--bg3:#323238;
+    --text:#f0f0f2;--text2:#a0a0a8;--text3:#606068;
+    --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.15);
+    --accent:#4da3ff;--accent-bg:#1a2d45;--accent-txt:#90c4ff;
+    --green:#2bca96;--green-bg:#0d2e22;
+    --amber-bg:#2e1e00;--amber-txt:#f0c060;
+    --red-bg:#2e0a0a;--red-txt:#f08080;
+  }
+}
+html{font-size:16px;-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;min-height:100vh}
+
+/* ── TABS ─────────────────────────────────── */
+.tabs{position:sticky;top:0;z-index:200;background:var(--bg);border-bottom:1px solid var(--border);display:flex;gap:0}
+.tab{flex:1;padding:0;border:none;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent;position:relative}
+.tab span{display:flex;flex-direction:column;align-items:center;gap:2px;padding:12px 8px 11px;font-size:13px;font-weight:500;color:var(--text3);transition:color .2s}
+.tab.active span{color:var(--accent)}
+.tab-line{position:absolute;bottom:0;left:10%;right:10%;height:2px;border-radius:2px 2px 0 0;background:var(--accent);transform:scaleX(0);transition:transform .2s;transform-origin:center}
+.tab.active .tab-line{transform:scaleX(1)}
+.tab-day{font-size:11px;color:var(--text3);font-weight:400}
+.tab.active .tab-day{color:var(--accent);opacity:.7}
+
+/* ── PANES ────────────────────────────────── */
+.pane{display:none;padding:16px 16px 40px}
+.pane.active{display:block}
+.day-header{margin-bottom:20px}
+.day-header h1{font-size:20px;font-weight:600;letter-spacing:-.02em}
+.day-header p{font-size:13px;color:var(--text2);margin-top:4px}
+.day-header .focus-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.focus-tag{font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;border:1px solid var(--border2);color:var(--text2)}
+
+/* ── SECTION LABELS ───────────────────────── */
+.sec-label{font-size:10px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--text3);margin:22px 0 8px}
+.ss-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;background:var(--amber-bg);color:var(--amber-txt);border-radius:6px;padding:3px 10px;margin-bottom:6px}
+
+/* ── CARDS ────────────────────────────────── */
+.card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);margin-bottom:8px;overflow:hidden;transition:border-color .15s,box-shadow .15s}
+.card:active{border-color:var(--border2)}
+.card.open{border-color:var(--border2)}
+.card-hd{display:flex;align-items:center;gap:11px;padding:13px 14px;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;min-height:58px}
+.num{width:30px;height:30px;border-radius:50%;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--text3);flex-shrink:0}
+.card-title{flex:1;min-width:0}
+.card-title .name{font-size:14px;font-weight:500;color:var(--text);line-height:1.3}
+.card-title .sets{font-size:11px;color:var(--text3);margin-top:3px;line-height:1.4}
+.chev{font-size:18px;color:var(--text3);transition:transform .25s ease;flex-shrink:0}
+.card.open .chev{transform:rotate(180deg)}
+
+/* ── ACCORDION (CSS grid trick) ───────────── */
+.card-bd{display:grid;grid-template-rows:0fr;transition:grid-template-rows .25s ease}
+.card.open .card-bd{grid-template-rows:1fr}
+.card-bd-inner{overflow:hidden}
+.card-bd-content{padding:0 14px 16px;border-top:1px solid var(--border)}
+
+/* ── MEDIA LINKS ──────────────────────────── */
+.media-links{display:flex;gap:7px;margin:12px 0 4px;flex-wrap:wrap}
+.ml{display:inline-flex;align-items:center;gap:5px;padding:7px 12px;border-radius:20px;font-size:12px;font-weight:500;text-decoration:none;border:1px solid var(--border2);color:var(--text2);background:var(--bg2);-webkit-tap-highlight-color:transparent;transition:background .15s}
+.ml:active{background:var(--bg3)}
+.ml.video{background:var(--accent-bg);color:var(--accent-txt);border-color:transparent}
+.ml i{font-size:14px}
+
+/* ── MACHINE BLOCK ────────────────────────── */
+.mblock{background:var(--bg2);border-radius:var(--rs);padding:11px 13px;margin:12px 0 4px}
+.mblock .mtitle{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px}
+.mblock .mdesc{font-size:13px;color:var(--text2);line-height:1.55}
+
+/* ── CONTENT SECTIONS ─────────────────────── */
+.stitle{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--text3);margin:14px 0 8px}
+.steps{list-style:none}
+.steps li{display:flex;gap:10px;font-size:13px;color:var(--text);line-height:1.5;padding:7px 0;border-bottom:1px solid var(--border)}
+.steps li:last-child{border-bottom:none}
+.sn{width:20px;height:20px;min-width:20px;border-radius:50%;background:var(--accent-bg);color:var(--accent-txt);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.tips{display:flex;flex-direction:column;gap:7px}
+.tip{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--text);line-height:1.5}
+.tip i{color:var(--green);flex-shrink:0;font-size:15px;margin-top:2px}
+.muscles{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+.mt{font-size:11px;background:var(--bg2);color:var(--text2);padding:4px 10px;border-radius:20px;border:1px solid var(--border)}
+.drop{font-size:12px;line-height:1.6;color:var(--amber-txt);background:var(--amber-bg);border-radius:6px;padding:8px 11px;margin-top:10px}
+.drop strong{font-weight:600}
 </style>
 </head>
-    
-<div class="wrap">
-<div class="header">
-  <p>Нажми на упражнение, чтобы узнать технику выполнения</p>
+<body>
+
+<nav class="tabs" role="tablist">
+  <button class="tab active" onclick="showDay(0)" role="tab" aria-selected="true">
+    <span>День 1<span class="tab-day">Спина · Плечи</span></span>
+    <div class="tab-line"></div>
+  </button>
+  <button class="tab" onclick="showDay(1)" role="tab">
+    <span>День 2<span class="tab-day">Ноги · Грудь</span></span>
+    <div class="tab-line"></div>
+  </button>
+  <button class="tab" onclick="showDay(2)" role="tab">
+    <span>День 3<span class="tab-day">Грудь · Плечи · Спина</span></span>
+    <div class="tab-line"></div>
+  </button>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     ДЕНЬ 1
+════════════════════════════════════════════ -->
+<div class="pane active" id="day-0">
+<div class="day-header">
+  <h1>День 1 — спина и плечи</h1>
+  <p>Нажми на упражнение, чтобы открыть технику выполнения</p>
+  <div class="focus-tags">
+    <span class="focus-tag">Широчайшие</span>
+    <span class="focus-tag">Трапеция</span>
+    <span class="focus-tag">Дельты</span>
+    <span class="focus-tag">Ромбовидные</span>
+  </div>
 </div>
 
-<div class="section-label">Разминка / основа</div>
+<div class="sec-label">Разминка / основа</div>
 
 <div class="card" onclick="toggle(this)">
-  <div class="card-header">
+  <div class="card-hd">
     <div class="num">1</div>
     <div class="card-title">
       <div class="name">Подтягивания в гравитроне</div>
       <div class="sets">3 подхода × 15 повторов</div>
     </div>
-    <i class="ti ti-chevron-down chevron" aria-hidden="true"></i>
+    <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
   </div>
-  <div class="card-body">
-    <div class="machine-block">
-      <i class="ti ti-device-desktop-analytics machine-icon" aria-hidden="true"></i>
-      <div class="machine-text">
-        <strong>Гравитрон (Assisted Pull-up Machine)</strong>
-        Большой вертикальный тренажёр с коленной подставкой. Помогает подтягиваться — чем больше вес на стеке, тем легче. Начни с противовеса ~30–40 кг.
-      </div>
+  <div class="card-bd"><div class="card-bd-inner"><div class="card-bd-content">
+    <div class="media-links">
+      <a class="ml video" href="https://www.youtube.com/results?search_query=подтягивания+гравитрон+техника+выполнения" target="_blank" rel="noopener"><i class="ti ti-brand-youtube"></i> Видео</a>
+      <a class="ml" href="https://www.google.com/search?q=gravitron+assisted+pullup+machine&tbm=isch" target="_blank" rel="noopener"><i class="ti ti-photo"></i> Фото тренажёра</a>
     </div>
-    <div class="section-title">Техника выполнения</div>
+    <div class="mblock">
+      <div class="mtitle">Гравитрон (Assisted Pull-up Machine)</div>
+      <div class="mdesc">Большой вертикальный тренажёр с коленной подставкой. Помогает подтягиваться — чем больше вес на стеке, тем легче. Начни с противовеса ~30–40 кг.</div>
+    </div>
+    <div class="stitle">Техника</div>
     <ul class="steps">
-      <li><span class="step-num">1</span>Встань на коленную подушку. Возьмись за верхние ручки прямым хватом чуть шире плеч.</li>
-      <li><span class="step-num">2</span>Свесь корпус вниз — полное вытяжение. Лопатки вниз и назад.</li>
-      <li><span class="step-num">3</span>Тяни себя вверх, пока подбородок не пройдёт планку. Локти ведут вниз и назад.</li>
-      <li><span class="step-num">4</span>Медленно опускайся — 2–3 секунды вниз.</li>
+      <li><span class="sn">1</span>Встань на коленную подушку. Возьмись за верхние ручки прямым хватом чуть шире плеч.</li>
+      <li><span class="sn">2</span>Свесь корпус вниз — полное вытяжение. Лопатки вниз и назад.</li>
+      <li><span class="sn">3</span>Тяни себя вверх, пока подбородок не пройдёт планку. Локти ведут вниз и назад.</li>
+      <li><span class="sn">4</span>Медленно опускайся — 2–3 секунды вниз.</li>
     </ul>
-    <div class="section-title">Ключевые ошибки</div>
+    <div class="stitle">Ошибки</div>
     <div class="tips">
-      <div class="tip"><i class="ti ti-check" aria-hidden="true"></i>Не тяни шею вперёд — подбородок не должен быть «первым»</div>
-      <div class="tip"><i class="ti ti-check" aria-hidden="true"></i>Не раскачивай тело — движение строго вертикальное</div>
-      <div class="tip"><i class="ti ti-check" aria-hidden="true"></i>Своди лопатки внизу перед каждым повтором</div>
+      <div class="tip"><i class="ti ti-check"></i>Не тяни шею вперёд — подбородок не должен быть «первым»</div>
+      <div class="tip"><i class="ti ti-check"></i>Не раскачивай тело — движение строго вертикальное</div>
+      <div class="tip"><i class="ti ti-check"></i>Своди лопатки в нижней точке перед каждым повтором</div>
     </div>
-    <div class="section-title">Работающие мышцы</div>
-    <div class="muscles">
-      <span class="muscle-tag">Широчайшие</span><span class="muscle-tag">Ромбовидные</span><span class="muscle-tag">Бицепс</span><span class="muscle-tag">Задняя дельта</span>
-    </div>
-  </div>
+    <div class="stitle">Мышцы</div>
+    <div class="muscles"><span class="mt">Широчайшие</span><span class="mt">Ромбовидные</span><span class="mt">Бицепс</span><span class="mt">Задняя дельта</span></div>
+  </div></div></div>
 </div>
 
-<div class="section-label">Суперсет — выполнять без отдыха между упражнениями</div>
-<div class="superset-badge"><i class="ti ti-refresh" aria-hidden="true"></i> Суперсет A</div>
+<div class="sec-label">Суперсет — без отдыха между упражнениями</div>
+<div class="ss-badge"><i class="ti ti-refresh"></i> Суперсет A</div>
 
 <div class="card" onclick="toggle(this)">
-  <div class="card-header">
+  <div class="card-hd">
     <div class="num">2a</div>
     <div class="card-title">
       <div class="name">Тяга штанги обратным хватом</div>
       <div class="sets">3 подхода × 10 повторов</div>
     </div>
-    <i class="ti ti-chevron-down chevron" aria-hidden="true"></i>
+    <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
   </div>
-  <div class="card-body">
-    <div class="machine-block">
-      <i class="ti ti-barbell machine-icon" aria-hidden="true"></i>
-      <div class="machine-text">
-        <strong>Свободные веса — штанга на полу или в стойке</strong>
-        Обратный хват (ладони смотрят вверх, супинация). Подбери вес так, чтобы 10 повторов были сложными, но с правильной техникой.
-      </div>
+  <div class="card-bd"><div class="card-bd-inner"><div class="card-bd-content">
+    <div class="media-links">
+      <a class="ml video" href="https://www.youtube.com/results?search_query=тяга+штанги+обратным+хватом+техника" target="_blank" rel="noopener"><i class="ti ti-brand-youtube"></i> Видео</a>
+      <a class="ml" href="https://www.google.com/search?q=barbell+bent+over+row+underhand+grip&tbm=isch" target="_blank" rel="noopener"><i class="ti ti-photo"></i> Фото</a>
     </div>
-    <div class="section-title">Техника выполнения</div>
+    <div class="mblock">
+      <div class="mtitle">Свободные веса — штанга</div>
+      <div class="mdesc">Обратный хват (ладони смотрят вверх). Подбери вес так, чтобы 10 повторов давались с усилием, но без потери техники.</div>
+    </div>
+    <div class="stitle">Техника</div>
     <ul class="steps">
-      <li><span class="step-num">1</span>Хват снизу чуть уже плеч. Ноги на ширине таза, лёгкий наклон вперёд ~45°.</li>
-      <li><span class="step-num">2</span>Спина прямая, поясница в нейтральном положении, не горбись.</li>
-      <li><span class="step-num">3</span>Тяни штангу к поясу — локти вдоль тела, уходят назад.</li>
-      <li><span class="step-num">4</span>В верхней точке сожми лопатки и задержись на 1 секунду.</li>
-      <li><span class="step-num">5</span>Медленно опускай штангу до полного вытяжения рук.</li>
+      <li><span class="sn">1</span>Хват снизу чуть уже плеч. Ноги на ширине таза, наклон вперёд ~45°.</li>
+      <li><span class="sn">2</span>Спина прямая, поясница нейтральная, не горбись.</li>
+      <li><span class="sn">3</span>Тяни штангу к поясу — локти вдоль тела, уходят назад.</li>
+      <li><span class="sn">4</span>В верхней точке сожми лопатки, задержись на 1 секунду.</li>
+      <li><span class="sn">5</span>Медленно опускай до полного вытяжения рук.</li>
     </ul>
-    <div class="section-title">Ключевые ошибки</div>
+    <div class="stitle">Ошибки</div>
     <div class="tips">
-      <div class="tip"><i class="ti ti-check" aria-hidden="true"></i>Не рывком — контролируй движение на протяжении всего подхода</div>
-      <div class="tip"><i class="ti ti-check" aria-hidden="true"></i>Спина не должна скруглиться — грудь смотрит чуть вниз</div>
+      <div class="tip"><i class="ti ti-check"></i>Не рывком — контролируй движение на протяжении всего подхода</div>
+      <div class="tip"><i class="ti ti-check"></i>Спина не скругляется — грудь смотрит чуть вниз</div>
     </div>
-    <div class="section-title">Работающие мышцы</div>
-    <div class="muscles">
-      <span class="muscle-tag">Широчайшие</span><span class="muscle-tag">Ромбовидные</span><span class="muscle-tag">Бицепс</span><span class="muscle-tag">Задний пучок дельты</span>
-    </div>
-  </div>
+    <div class="stitle">Мышцы</div>
+    <div class="muscles"><span class="mt">Широчайшие</span><span class="mt">Ромбовидные</span><span class="mt">Бицепс</span><span class="mt">Задняя дельта</span></div>
+  </div></div></div>
 </div>
 
 <div class="card" onclick="toggle(this)">
-  <div class="card-header">
+  <div class="card-hd">
     <div class="num">2b</div>
     <div class="card-title">
       <div class="name">Тяга гантели к поясу</div>
       <div class="sets">3 подхода × 10 повторов (каждой рукой)</div>
     </div>
-    <i class="ti ti-chevron-down chevron" aria-hidden="true"></i>
+    <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
   </div>
-  <div class="card-body">
-    <div class="machine-block">
-      <i class="ti ti-barbell machine-icon" aria-hidden="true"></i>
-      <div class="machine-text">
-        <strong>Гантель + скамья</strong>
-        Одна рука и колено опираются на скамью. Свободная рука держит гантель. Это одностороннее упражнение — выполняй поочерёдно.
-      </div>
+  <div class="card-bd"><div class="card-bd-inner"><div class="card-bd-content">
+    <div class="media-links">
+      <a class="ml video" href="https://www.youtube.com/results?search_query=тяга+гантели+к+поясу+одной+рукой+техника" target="_blank" rel="noopener"><i class="ti ti-brand-youtube"></i> Видео</a>
+      <a class="ml" href="https://www.google.com/search?q=dumbbell+one+arm+row+bench&tbm=isch" target="_blank" rel="noopener"><i class="ti ti-photo"></i> Фото</a>
     </div>
-    <div class="section-title">Техника выполнения</div>
+    <div class="mblock">
+      <div class="mtitle">Гантель + скамья</div>
+      <div class="mdesc">Одна рука и колено опираются на скамью. Свободная рука держит гантель. Выполняй поочерёдно.</div>
+    </div>
+    <div class="stitle">Техника</div>
     <ul class="steps">
-      <li><span class="step-num">1</span>Правое колено и правая ладонь на скамье. Спина горизонтальна полу.</li>
-      <li><span class="step-num">2</span>Левой рукой возьми гантель — рука опущена прямо вниз.</li>
-      <li><span class="step-num">3</span>Тяни гантель к поясу — локоть идёт строго вверх и назад.</li>
-      <li><span class="step-num">4</span>В верхней точке — лопатка сжата, задержись секунду.</li>
-      <li><span class="step-num">5</span>Плавно опусти до вытяжения. Повтори, затем смени руку.</li>
+      <li><span class="sn">1</span>Правое колено и правая ладонь на скамье. Спина горизонтальна полу.</li>
+      <li><span class="sn">2</span>Левой рукой возьми гантель — рука опущена прямо вниз.</li>
+      <li><span class="sn">3</span>Тяни гантель к поясу — локоть идёт строго вверх и назад.</li>
+      <li><span class="sn">4</span>В верхней точке — лопатка сжата, задержись секунду.</li>
+      <li><span class="sn">5</span>Плавно опусти до полного вытяжения. Смени руку.</li>
     </ul>
-    <div class="section-title">Ключевые ошибки</div>
+    <div class="stitle">Ошибки</div>
     <div class="tips">
-      <div class="tip"><i class="ti ti-check" aria-hidden="true"></i>Не поворачивай плечо вверх — держи корпус параллельно полу</div>
-      <div class="tip"><i class="ti ti-check" aria-hidden="true"></i>Не бросай гантель вниз — контролируй негативную фазу</div>
+      <div class="tip"><i class="ti ti-check"></i>Не поворачивай плечо вверх — держи корпус параллельно полу</div>
+      <div class="tip"><i class="ti ti-check"></i>Не бросай гантель вниз — контролируй негативную фазу</div>
     </div>
-    <div class="section-title">Работающие мышцы</div>
-    <div class="muscles">
-      <span class="muscle-tag">Широчайшие</span><span class="muscle-tag">Трапеция</span><span class="muscle-tag">Бицепс</span><span class="muscle-tag">Задняя дельта</span>
-    </div>
-  </div>
+    <div class="stitle">Мышцы</div>
+    <div class="muscles"><span class="mt">Широчайшие</span><span class="mt">Трапеция</span><span class="mt">Бицепс</span><span class="mt">Задняя дельта</span></div>
+  </div></div></div>
 </div>
 
-<div class="section-label">Изоляция спины</div>
+<div class="sec-label">Изоляция спины</div>
 
 <div class="card" onclick="toggle(this)">
-  <div class="card-header">
+  <div class="card-hd">
     <div class="num">3</div>
     <div class="card-title">
       <div class="name">Вертикальная тяга в хаммере</div>
-      <div class="sets">4 подхода: 15 / 12 / 10 / 8+8+8 (дроп-сет)</div>
+      <div class="sets">4 подхода: 15 / 12 / 10 / 8+8+8 (дроп)</div>
     </div>
-    <i class="ti ti-chevron-down chevron" aria-hidden="true"></i>
+    <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
   </div>
-  <div class="card-body">
-    <div class="machine-block">
-      <i class="ti ti-device-desktop-analytics machine-icon" aria-hidden="true"></i>
-      <div class="machine-text">
-        <strong>Hammer Strength — тяга сверху вниз</strong>
-        Силовой тренажёр с независимыми рукоятями под каждую руку. Сиди лицом к машине. На некоторых моделях — горизонтальная версия.
-      </div>
+  <div class="card-bd"><div class="card-bd-inner"><div class="card-bd-content">
+    <div class="media-links">
+      <a class="ml video" href="https://www.youtube.com/results?search_query=hammer+strength+lat+pulldown+technique" target="_blank" rel="noopener"><i class="ti ti-brand-youtube"></i> Видео</a>
+      <a class="ml" href="https://www.google.com/search?q=hammer+strength+high+row+machine&tbm=isch" target="_blank" rel="noopener"><i class="ti ti-photo"></i> Фото тренажёра</a>
     </div>
-    <div class="section-title">Техника выполнения</div>
+    <div class="mblock">
+      <div class="mtitle">Hammer Strength — тяга сверху вниз</div>
+      <div class="mdesc">Силовой тренажёр с независимыми рукоятями под каждую руку и загружаемыми блинами. Сиди лицом к машине, грудь упирается в подушку.</div>
+    </div>
+    <div class="stitle">Техника</div>
     <ul class="steps">
-      <li><span class="step-num">1</span>Сядь, упри грудь в подушку. Возьмись за рукояти сверху (нейтральный хват).</li>
-      <li><span class="step-num">2</span>Потяни рукояти вниз и к себе, локти уходят вниз вдоль тела.</li>
-      <li><span class="step-num">3</span>В нижней точке — лопатки максимально сжаты, секундная пауза.</li>
-      <li><span class="step-num">4</span>Медленно вернись в исходное положение.</li>
+      <li><span class="sn">1</span>Сядь, упри грудь в подушку. Возьмись за рукояти нейтральным хватом.</li>
+      <li><span class="sn">2</span>Потяни рукояти вниз и к себе — локти уходят вниз вдоль тела.</li>
+      <li><span class="sn">3</span>В нижней точке — лопатки максимально сжаты, пауза 1 секунда.</li>
+      <li><span class="sn">4</span>Медленно вернись в исходное положение.</li>
     </ul>
-    <div class="drop-note"><strong>Дроп-сет (последний подход 8+8+8):</strong> сделай 8 повторов, сразу сбрось вес на ~20%, ещё 8 повторов, снова сброс — ещё 8. Без отдыха между снижениями.</div>
-    <div class="section-title">Работающие мышцы</div>
-    <div class="muscles">
-      <span class="muscle-tag">Широчайшие</span><span class="muscle-tag">Большая круглая</span><span class="muscle-tag">Бицепс</span>
-    </div>
-  </div>
+    <div class="drop"><strong>Дроп-сет (последний подход 8+8+8):</strong> 8 повторов → сброс ~20% → ещё 8 → сброс → ещё 8. Без отдыха между снижениями.</div>
+    <div class="stitle">Мышцы</div>
+    <div class="muscles"><span class="mt">Широчайшие</span><span class="mt">Большая круглая</span><span class="mt">Бицепс</span></div>
+  </div></div></div>
 </div>
 
 <div class="card" onclick="toggle(this)">
-  <div class="card-header">
+  <div class="card-hd">
     <div class="num">4</div>
     <div class="card-title">
       <div class="name">Пуловер в кроссовере</div>
       <div class="sets">3 подхода × 15 повторов</div>
     </div>
-    <i class="ti ti-chevron-down chevron" aria-hidden="true"></i>
+    <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
   </div>
-  <div class="card-body">
-    <div class="machine-block">
-      <i class="ti ti-arrows-down-up machine-icon" aria-hidden="true"></i>
-      <div class="machine-text">
-        <strong>Кроссовер (Cable Machine) — верхний блок</strong>
-        Блочная стойка с тросом, идущим сверху. Прикрепи прямую рукоять или верёвку. Встань спиной к стойке или лицом — зависит от варианта.
-      </div>
+  <div class="card-bd"><div class="card-bd-inner"><div class="card-bd-content">
+    <div class="media-links">
+      <a class="ml video" href="https://www.youtube.com/results?search_query=cable+pullover+crossover+широчайшие+техника" target="_blank" rel="noopener"><i class="ti ti-brand-youtube"></i> Видео</a>
+      <a class="ml" href="https://www.google.com/search?q=cable+pullover+straight+bar+crossover&tbm=isch" target="_blank" rel="noopener"><i class="ti ti-photo"></i> Фото</a>
     </div>
-    <div class="section-title">Техника выполнения</div>
+    <div class="mblock">
+      <div class="mtitle">Кроссовер — верхний блок</div>
+      <div class="mdesc">Блочная стойка с тросом сверху. Прикрепи прямую рукоять или верёвку. Встань лицом к стойке.</div>
+    </div>
+    <div class="stitle">Техника</div>
     <ul class="steps">
-      <li><span class="step-num">1</span>Встань лицом к верхнему блоку, возьмись за прямую рукоять прямым хватом.</li>
-      <li><span class="step-num">2</span>Слегка наклони корпус вперёд, руки подняты перед собой.</li>
-      <li><span class="step-num">3</span>Прямые (чуть согнутые) руки тяни дугой вниз — к бёдрам.</li>
-      <li><span class="step-num">4</span>В нижней точке сожми широчайшие. Медленно возвращайся вверх.</li>
+      <li><span class="sn">1</span>Встань лицом к верхнему блоку, возьмись за прямую рукоять прямым хватом.</li>
+      <li><span class="sn">2</span>Слегка наклони корпус вперёд, руки вытянуты перед собой вверх.</li>
+      <li><span class="sn">3</span>Прямыми руками (чуть согнутыми) тяни дугой вниз — к бёдрам.</li>
+      <li><span class="sn">4</span>В нижней точке сожми широчайшие. Медленно возвращайся вверх.</li>
     </ul>
-    <div class="section-title">Ключевые ошибки</div>
+    <div class="stitle">Ошибки</div>
     <div class="tips">
-      <div class="tip"><i class="ti ti-check" aria-hidden="true"></i>Руки не сгибай сильно — это не жим, а дуговое движение</div>
-      <div class="tip"><i class="ti ti-check" aria-hidden="true"></i>Не помогай корпусом — движение только в плечевом суставе</div>
+      <div class="tip"><i class="ti ti-check"></i>Руки не сгибай сильно — это не жим, а дуговое движение</div>
+      <div class="tip"><i class="ti ti-check"></i>Не помогай корпусом — движение только в плечевом суставе</div>
     </div>
-    <div class="section-title">Работающие мышцы</div>
-    <div class="muscles">
-      <span class="muscle-tag">Широчайшие</span><span class="muscle-tag">Большая грудная</span><span class="muscle-tag">Трицепс (длинная голова)</span>
-    </div>
-  </div>
+    <div class="stitle">Мышцы</div>
+    <div class="muscles"><span class="mt">Широчайшие</span><span class="mt">Большая грудная</span><span class="mt">Трицепс (длинная)</span></div>
+  </div></div></div>
 </div>
 
-<div class="section-label">Суперсет — плечи</div>
-<div class="superset-badge"><i class="ti ti-refresh" aria-hidden="true"></i> Суперсет B</div>
+<div class="sec-label">Суперсет — плечи</div>
+<div class="ss-badge"><i class="ti ti-refresh"></i> Суперсет B</div>
 
 <div class="card" onclick="toggle(this)">
-  <div class="card-header">
+  <div class="card-hd">
     <div class="num">5a</div>
     <div class="card-title">
       <div class="name">Жим Арнольда</div>
       <div class="sets">4 подхода × 10 повторов</div>
     </div>
-    <i class="ti ti-chevron-down chevron" aria-hidden="true"></i>
+    <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
   </div>
-  <div class="card-body">
-    <div class="machine-block">
-      <i class="ti ti-barbell machine-icon" aria-hidden="true"></i>
-      <div class="machine-text">
-        <strong>Гантели — сидя или стоя</strong>
-        Авторский жим от Арнольда Шварценеггера. Сочетает пронацию и жим — прорабатывает все три пучка дельты. Выполняй сидя на скамье с поддержкой спины.
-      </div>
+  <div class="card-bd"><div class="card-bd-inner"><div class="card-bd-content">
+    <div class="media-links">
+      <a class="ml video" href="https://www.youtube.com/results?search_query=жим+арнольда+техника+выполнения" target="_blank" rel="noopener"><i class="ti ti-brand-youtube"></i> Видео</a>
+      <a class="ml" href="https://www.google.com/search?q=arnold+press+dumbbell+seated&tbm=isch" target="_blank" rel="noopener"><i class="ti ti-photo"></i> Фото</a>
     </div>
-    <div class="section-title">Техника выполнения</div>
+    <div class="mblock">
+      <div class="mtitle">Гантели — сидя на скамье со спинкой</div>
+      <div class="mdesc">Авторский жим Шварценеггера: сочетает пронацию и жим, прорабатывает все три пучка дельты.</div>
+    </div>
+    <div class="stitle">Техника</div>
     <ul class="steps">
-      <li><span class="step-num">1</span>Стартовая позиция: гантели у плеч, ладони смотрят на тебя (как в конце подъёма на бицепс).</li>
-      <li><span class="step-num">2</span>Начни жать вверх и одновременно разворачивай кисти наружу.</li>
-      <li><span class="step-num">3</span>В верхней точке ладони смотрят вперёд, руки почти прямые.</li>
-      <li><span class="step-num">4</span>Опускай с обратным разворотом — возвращай ладони к себе.</li>
+      <li><span class="sn">1</span>Старт: гантели у плеч, ладони смотрят на тебя (как финиш бицепса).</li>
+      <li><span class="sn">2</span>Жми вверх и одновременно разворачивай кисти наружу.</li>
+      <li><span class="sn">3</span>Вверху — ладони смотрят вперёд, руки почти прямые.</li>
+      <li><span class="sn">4</span>Опускай с обратным разворотом — ладони возвращаются к себе.</li>
     </ul>
-    <div class="section-title">Ключевые ошибки</div>
+    <div class="stitle">Ошибки</div>
     <div class="tips">
-      <div class="tip"><i class="ti ti-check" aria-hidden="true"></i>Не жми сверхтяжело — важна амплитуда вращения</div>
-      <div class="tip"><i class="ti ti-check" aria-hidden="true"></i>Не разводи локти слишком широко в нижней точке</div>
+      <div class="tip"><i class="ti ti-check"></i>Не жми сверхтяжело — важна полная амплитуда вращения</div>
+      <div class="tip"><i class="ti ti-check"></i>Не разводи локти слишком широко в нижней точке</div>
     </div>
-    <div class="section-title">Работающие мышцы</div>
-    <div class="muscles">
-      <span class="muscle-tag">Все 3 пучка дельты</span><span class="muscle-tag">Трицепс</span><span class="muscle-tag">Трапеция</span>
-    </div>
-  </div>
+    <div class="stitle">Мышцы</div>
+    <div class="muscles"><span class="mt">Все 3 пучка дельты</span><span class="mt">Трицепс</span><span class="mt">Трапеция</span></div>
+  </div></div></div>
 </div>
 
 <div class="card" onclick="toggle(this)">
-  <div class="card-header">
+  <div class="card-hd">
     <div class="num">5b</div>
     <div class="card-title">
       <div class="name">Махи вперёд и в стороны</div>
       <div class="sets">4 подхода × 10+10 повторов</div>
     </div>
-    <i class="ti ti-chevron-down chevron" aria-hidden="true"></i>
+    <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
   </div>
-  <div class="card-body">
-    <div class="machine-block">
-      <i class="ti ti-barbell machine-icon" aria-hidden="true"></i>
-      <div class="machine-text">
-        <strong>Лёгкие гантели — стоя</strong>
-        10 махов вперёд + сразу 10 в стороны без паузы. Это одна серия. Бери лёгкий вес — 4–8 кг, техника важнее веса.
-      </div>
+  <div class="card-bd"><div class="card-bd-inner"><div class="card-bd-content">
+    <div class="media-links">
+      <a class="ml video" href="https://www.youtube.com/results?search_query=махи+гантелями+в+стороны+вперёд+дельты+техника" target="_blank" rel="noopener"><i class="ti ti-brand-youtube"></i> Видео</a>
+      <a class="ml" href="https://www.google.com/search?q=dumbbell+lateral+front+raises+shoulders&tbm=isch" target="_blank" rel="noopener"><i class="ti ti-photo"></i> Фото</a>
     </div>
-    <div class="section-title">Махи вперёд (передняя дельта)</div>
-    <ul class="steps">
-      <li><span class="step-num">1</span>Гантели перед бёдрами, ладони смотрят вниз или друг на друга.</li>
-      <li><span class="step-num">2</span>Поднимай прямые руки вперёд до уровня плеч (90°). Не выше.</li>
-      <li><span class="step-num">3</span>Медленно опускай — не бросай вниз.</li>
-    </ul>
-    <div class="section-title">Махи в стороны (средняя дельта)</div>
-    <ul class="steps">
-      <li><span class="step-num">1</span>Гантели по бокам, ладони вниз, небольшой наклон корпуса вперёд.</li>
-      <li><span class="step-num">2</span>Разводи руки в стороны до параллели с полом. Локоть чуть выше кисти.</li>
-      <li><span class="step-num">3</span>Задержись на секунду вверху. Медленно опускай.</li>
-    </ul>
-    <div class="section-title">Работающие мышцы</div>
-    <div class="muscles">
-      <span class="muscle-tag">Передняя дельта</span><span class="muscle-tag">Средняя дельта</span><span class="muscle-tag">Трапеция (стабилизатор)</span>
+    <div class="mblock">
+      <div class="mtitle">Лёгкие гантели — стоя</div>
+      <div class="mdesc">10 махов вперёд + сразу 10 в стороны без паузы. Бери лёгкий вес (4–8 кг) — техника важнее веса.</div>
     </div>
-  </div>
+    <div class="stitle">Махи вперёд (передняя дельта)</div>
+    <ul class="steps">
+      <li><span class="sn">1</span>Гантели перед бёдрами, ладони вниз или друг на друга.</li>
+      <li><span class="sn">2</span>Поднимай руки вперёд до уровня плеч (90°). Не выше.</li>
+      <li><span class="sn">3</span>Медленно опускай — не бросай вниз.</li>
+    </ul>
+    <div class="stitle">Махи в стороны (средняя дельта)</div>
+    <ul class="steps">
+      <li><span class="sn">1</span>Гантели по бокам, лёгкий наклон корпуса вперёд.</li>
+      <li><span class="sn">2</span>Разводи руки в стороны до параллели с полом. Локоть чуть выше кисти.</li>
+      <li><span class="sn">3</span>Задержись вверху, медленно опускай.</li>
+    </ul>
+    <div class="stitle">Мышцы</div>
+    <div class="muscles"><span class="mt">Передняя дельта</span><span class="mt">Средняя дельта</span><span class="mt">Трапеция</span></div>
+  </div></div></div>
 </div>
 
-<div class="section-label">Финишер</div>
+<div class="sec-label">Финишер</div>
 
 <div class="card" onclick="toggle(this)">
-  <div class="card-header">
+  <div class="card-hd">
     <div class="num">6</div>
     <div class="card-title">
       <div class="name">Отведение на заднюю дельту в тренажёре</div>
       <div class="sets">4 подхода × 10 повторов</div>
     </div>
-    <i class="ti ti-chevron-down chevron" aria-hidden="true"></i>
+    <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
   </div>
-  <div class="card-body">
-    <div class="machine-block">
-      <i class="ti ti-device-desktop-analytics machine-icon" aria-hidden="true"></i>
-      <div class="machine-text">
-        <strong>«Бабочка» наоборот / Pec Deck Rear Delt</strong>
-        Тот же тренажёр, что для сведения рук на грудь — но ты садишься лицом к подушке. Разворачивай рукояти горизонтально или бери внешние ручки.
-      </div>
+  <div class="card-bd"><div class="card-bd-inner"><div class="card-bd-content">
+    <div class="media-links">
+      <a class="ml video" href="https://www.youtube.com/results?search_query=задняя+дельта+тренажёр+бабочка+наоборот+техника" target="_blank" rel="noopener"><i class="ti ti-brand-youtube"></i> Видео</a>
+      <a class="ml" href="https://www.google.com/search?q=pec+deck+rear+delt+fly+machine&tbm=isch" target="_blank" rel="noopener"><i class="ti ti-photo"></i> Фото тренажёра</a>
     </div>
-    <div class="section-title">Техника выполнения</div>
+    <div class="mblock">
+      <div class="mtitle">«Бабочка» наоборот / Pec Deck Rear Delt</div>
+      <div class="mdesc">Тот же тренажёр, что для сведения рук на грудь — но садишься лицом к подушке. Возьмись за горизонтальные рукояти.</div>
+    </div>
+    <div class="stitle">Техника</div>
     <ul class="steps">
-      <li><span class="step-num">1</span>Сядь лицом к подушке тренажёра. Возьмись за горизонтальные рукоятки.</li>
-      <li><span class="step-num">2</span>Отводи руки назад и в стороны — как будто хочешь соединить лопатки.</li>
-      <li><span class="step-num">3</span>В крайней точке — пауза 1 секунду, лопатки максимально сжаты.</li>
-      <li><span class="step-num">4</span>Медленно возвращай вперёд, сопротивляясь весу.</li>
+      <li><span class="sn">1</span>Сядь лицом к подушке тренажёра. Возьмись за горизонтальные рукояти.</li>
+      <li><span class="sn">2</span>Отводи руки назад и в стороны — как будто сводишь лопатки.</li>
+      <li><span class="sn">3</span>В крайней точке — пауза 1 секунда.</li>
+      <li><span class="sn">4</span>Медленно возвращай вперёд, сопротивляясь весу.</li>
     </ul>
-    <div class="section-title">Ключевые ошибки</div>
+    <div class="stitle">Ошибки</div>
     <div class="tips">
-      <div class="tip"><i class="ti ti-check" aria-hidden="true"></i>Не сгибай руки в локтях — держи их почти прямыми</div>
-      <div class="tip"><i class="ti ti-check" aria-hidden="true"></i>Не помогай корпусом — только руки и плечевой сустав</div>
-      <div class="tip"><i class="ti ti-check" aria-hidden="true"></i>Вес небольшой — лучше качественное сокращение, чем большой вес с читингом</div>
+      <div class="tip"><i class="ti ti-check"></i>Не сгибай руки — держи локти почти прямыми</div>
+      <div class="tip"><i class="ti ti-check"></i>Не помогай корпусом — только плечевой сустав</div>
+      <div class="tip"><i class="ti ti-check"></i>Вес небольшой — качественное сокращение важнее</div>
     </div>
-    <div class="section-title">Работающие мышцы</div>
-    <div class="muscles">
-      <span class="muscle-tag">Задняя дельта</span><span class="muscle-tag">Ромбовидные</span><span class="muscle-tag">Трапеция (средняя)</span>
-    </div>
+    <div class="stitle">Мышцы</div>
+    <div class="muscles"><span class="mt">Задняя дельта</span><span class="mt">Ромбовидные</span><span class="mt">Трапеция</span></div>
+  </div></div></div>
+</div>
+</div><!-- /day-0 -->
+
+
+<!-- ═══════════════════════════════════════════
+     ДЕНЬ 2
+════════════════════════════════════════════ -->
+<div class="pane" id="day-1">
+<div class="day-header">
+  <h1>День 2 — трицепс, ноги, грудь</h1>
+  <p>Нажми на упражнение, чтобы открыть технику выполнения</p>
+  <div class="focus-tags">
+    <span class="focus-tag">Трицепс</span>
+    <span class="focus-tag">Квадрицепс</span>
+    <span class="focus-tag">Бицепс бедра</span>
+    <span class="focus-tag">Ягодицы</span>
+    <span class="focus-tag">Грудные</span>
   </div>
 </div>
 
+<div class="sec-label">Трицепс</div>
+
+<div class="card" onclick="toggle(this)">
+  <div class="card-hd">
+    <div class="num">1</div>
+    <div class="card-title">
+      <div class="name">Разгибания одной и двумя руками</div>
+      <div class="sets">4 подхода × 10+10 повторов</div>
+    </div>
+    <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+  </div>
+  <div class="card-bd"><div class="card-bd-inner"><div class="card-bd-content">
+    <div class="media-links">
+      <a class="ml video" href="https://www.youtube.com/results?search_query=разгибание+трицепса+одной+двумя+руками+гантель+кроссовер" target="_blank" rel="noopener"><i class="ti ti-brand-youtube"></i> Видео</a>
+      <a class="ml" href="https://www.google.com/search?q=overhead+tricep+extension+dumbbell+cable&tbm=isch" target="_blank" rel="noopener"><i class="ti ti-photo"></i> Фото</a>
+    </div>
+    <div class="mblock">
+      <div class="mtitle">Гантель или кабель — стоя / сидя</div>
+      <div class="mdesc">10 повторов одной рукой + сразу 10 двумя руками — это одна серия. Можно делать с гантелью над головой или на нижнем блоке кроссовера.</div>
+    </div>
+    <div class="stitle">Разгибание одной рукой (гантель/кабель)</div>
+    <ul class="steps">
+      <li><span class="sn">1</span>Возьми гантель одной рукой. Подними над головой, согни в локте — предплечье за головой.</li>
+      <li><span class="sn">2</span>Придерживай локоть свободной рукой или второй рукой у головы.</li>
+      <li><span class="sn">3</span>Разгибай руку вверх до полного выпрямления. Медленно опускай.</li>
+    </ul>
+    <div class="stitle">Разгибание двумя руками</div>
+    <ul class="steps">
+      <li><span class="sn">1</span>Обхвати гантель двумя руками (или возьми рукоять кабеля).</li>
+      <li><span class="sn">2</span>Поднять над головой. Локти смотрят вверх и чуть вперёд.</li>
+      <li><span class="sn">3</span>Плавно опускай предплечья за голову, сохраняя положение локтей.</li>
+      <li><span class="sn">4</span>Разгибай вверх — полное выпрямление в верхней точке.</li>
+    </ul>
+    <div class="stitle">Ошибки</div>
+    <div class="tips">
+      <div class="tip"><i class="ti ti-check"></i>Локти не «гуляют» в стороны — держи их на месте</div>
+      <div class="tip"><i class="ti ti-check"></i>Не используй инерцию корпуса — движение только в локте</div>
+    </div>
+    <div class="stitle">Мышцы</div>
+    <div class="muscles"><span class="mt">Трицепс (длинная голова)</span><span class="mt">Трицепс (латеральная)</span></div>
+  </div></div></div>
 </div>
+
+<div class="sec-label">Ноги</div>
+
+<div class="card" onclick="toggle(this)">
+  <div class="card-hd">
+    <div class="num">2</div>
+    <div class="card-title">
+      <div class="name">Выпады в шаге по залу</div>
+      <div class="sets">3 подхода × 20 повторов (в сумме)</div>
+    </div>
+    <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+  </div>
+  <div class="card-bd"><div class="card-bd-inner"><div class="card-bd-content">
+    <div class="media-links">
+      <a class="ml video" href="https://www.youtube.com/results?search_query=выпады+в+шаге+по+залу+техника+штанга+гантели" target="_blank" rel="noopener"><i class="ti ti-brand-youtube"></i> Видео</a>
+      <a class="ml" href="https://www.google.com/search?q=walking+lunges+dumbbell+barbell&tbm=isch" target="_blank" rel="noopener"><i class="ti ti-photo"></i> Фото</a>
+    </div>
+    <div class="mblock">
+      <div class="mtitle">Гантели в руках или штанга на плечах</div>
+      <div class="mdesc">Передвигаешься шагами вперёд по залу. 20 повторов суммарно (10 на каждую ногу). Для новичков — без отягощения или с лёгкими гантелями.</div>
+    </div>
+    <div class="stitle">Техника</div>
+    <ul class="steps">
+      <li><span class="sn">1</span>Встань прямо, гантели в руках (или штанга на плечах).</li>
+      <li><span class="sn">2</span>Сделай большой шаг вперёд одной ногой.</li>
+      <li><span class="sn">3</span>Опускайся вниз: переднее колено над щиколоткой (90°), заднее колено почти касается пола.</li>
+      <li><span class="sn">4</span>Оттолкнись передней ногой и шагни вперёд — теперь другой ногой.</li>
+    </ul>
+    <div class="stitle">Ошибки</div>
+    <div class="tips">
+      <div class="tip"><i class="ti ti-check"></i>Переднее колено не выходит далеко за носок</div>
+      <div class="tip"><i class="ti ti-check"></i>Корпус прямой — не заваливайся вперёд</div>
+      <div class="tip"><i class="ti ti-check"></i>Задняя нога на носке — не ставь её на пятку</div>
+    </div>
+    <div class="stitle">Мышцы</div>
+    <div class="muscles"><span class="mt">Квадрицепс</span><span class="mt">Ягодицы</span><span class="mt">Бицепс бедра</span><span class="mt">Икры</span></div>
+  </div></div></div>
+</div>
+
+<div class="sec-label">Суперсет — без отдыха между упражнениями</div>
+<div class="ss-badge"><i class="ti ti-refresh"></i> Суперсет C</div>
+
+<div class="card" onclick="toggle(this)">
+  <div class="card-hd">
+    <div class="num">3a</div>
+    <div class="card-title">
+      <div class="name">Сгибание ног лёжа</div>
+      <div class="sets">4 подхода: 15 / 12 / 10 / 6+6+6 (дроп)</div>
+    </div>
+    <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+  </div>
+  <div class="card-bd"><div class="card-bd-inner"><div class="card-bd-content">
+    <div class="media-links">
+      <a class="ml video" href="https://www.youtube.com/results?search_query=сгибание+ног+лёжа+тренажёр+техника" target="_blank" rel="noopener"><i class="ti ti-brand-youtube"></i> Видео</a>
+      <a class="ml" href="https://www.google.com/search?q=lying+leg+curl+machine&tbm=isch" target="_blank" rel="noopener"><i class="ti ti-photo"></i> Фото тренажёра</a>
+    </div>
+    <div class="mblock">
+      <div class="mtitle">Тренажёр для сгибания ног лёжа (Lying Leg Curl)</div>
+      <div class="mdesc">Лежишь животом на скамье тренажёра. Ноги зажаты под мягким валиком. Изолированная работа бицепса бедра.</div>
+    </div>
+    <div class="stitle">Техника</div>
+    <ul class="steps">
+      <li><span class="sn">1</span>Ляг животом на скамью. Ноги прямые, валик над пятками.</li>
+      <li><span class="sn">2</span>Держись за рукоятки по бокам. Таз прижат к скамье.</li>
+      <li><span class="sn">3</span>Согни ноги к ягодицам — как можно ближе, полная амплитуда.</li>
+      <li><span class="sn">4</span>В крайней точке — пауза 1 секунда. Медленно выпрями ноги.</li>
+    </ul>
+    <div class="drop"><strong>Дроп-сет (последний подход 6+6+6):</strong> 6 повторов → сброс ~20% → 6 повторов → сброс → 6 повторов.</div>
+    <div class="stitle">Мышцы</div>
+    <div class="muscles"><span class="mt">Бицепс бедра</span><span class="mt">Полусухожильная</span><span class="mt">Икры</span></div>
+  </div></div></div>
+</div>
+
+<div class="card" onclick="toggle(this)">
+  <div class="card-hd">
+    <div class="num">3b</div>
+    <div class="card-title">
+      <div class="name">Жим ногами</div>
+      <div class="sets">4 подхода: 12 / 10 / 10 / 8+8+8 (дроп)</div>
+    </div>
+    <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+  </div>
+  <div class="card-bd"><div class="card-bd-inner"><div class="card-bd-content">
+    <div class="media-links">
+      <a class="ml video" href="https://www.youtube.com/results?search_query=жим+ногами+тренажёр+техника+постановка+ног" target="_blank" rel="noopener"><i class="ti ti-brand-youtube"></i> Видео</a>
+      <a class="ml" href="https://www.google.com/search?q=leg+press+machine+45+degree&tbm=isch" target="_blank" rel="noopener"><i class="ti ti-photo"></i> Фото тренажёра</a>
+    </div>
+    <div class="mblock">
+      <div class="mtitle">Тренажёр для жима ногами (Leg Press)</div>
+      <div class="mdesc">Наклонная платформа под 45°. Ты сидишь в кресле и толкаешь платформу ногами. Одна из самых нагруженных машин в зале.</div>
+    </div>
+    <div class="stitle">Техника</div>
+    <ul class="steps">
+      <li><span class="sn">1</span>Сядь в тренажёр. Ступни на ширине плеч или чуть шире, середина платформы.</li>
+      <li><span class="sn">2</span>Опускай платформу, пока угол в колене не достигнет ~90° (не больше).</li>
+      <li><span class="sn">3</span>Выжимай платформу вверх мощным движением — не до полного выпрямления колен.</li>
+      <li><span class="sn">4</span>Колени всегда над носками — не сводятся внутрь.</li>
+    </ul>
+    <div class="drop"><strong>Дроп-сет (последний подход 8+8+8):</strong> 8 повторов → сброс одного блина с каждой стороны → 8 → сброс → 8.</div>
+    <div class="stitle">Ошибки</div>
+    <div class="tips">
+      <div class="tip"><i class="ti ti-check"></i>Не отрывай поясницу от сиденья в нижней точке</div>
+      <div class="tip"><i class="ti ti-check"></i>Не блокируй колени полностью вверху</div>
+    </div>
+    <div class="stitle">Мышцы</div>
+    <div class="muscles"><span class="mt">Квадрицепс</span><span class="mt">Ягодицы</span><span class="mt">Бицепс бедра</span></div>
+  </div></div></div>
+</div>
+
+<div class="sec-label">Задняя поверхность бедра</div>
+
+<div class="card" onclick="toggle(this)">
+  <div class="card-hd">
+    <div class="num">4</div>
+    <div class="card-title">
+      <div class="name">Румынская тяга со штангой</div>
+      <div class="sets">4 подхода × 15 повторов</div>
+    </div>
+    <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+  </div>
+  <div class="card-bd"><div class="card-bd-inner"><div class="card-bd-content">
+    <div class="media-links">
+      <a class="ml video" href="https://www.youtube.com/results?search_query=румынская+тяга+со+штангой+техника+бицепс+бедра" target="_blank" rel="noopener"><i class="ti ti-brand-youtube"></i> Видео</a>
+      <a class="ml" href="https://www.google.com/search?q=romanian+deadlift+barbell+technique&tbm=isch" target="_blank" rel="noopener"><i class="ti ti-photo"></i> Фото</a>
+    </div>
+    <div class="mblock">
+      <div class="mtitle">Штанга — свободные веса</div>
+      <div class="mdesc">Одно из лучших упражнений для задней поверхности бедра. Не путать с классической становой тягой — здесь колени почти прямые.</div>
+    </div>
+    <div class="stitle">Техника</div>
+    <ul class="steps">
+      <li><span class="sn">1</span>Возьми штангу прямым хватом чуть шире плеч. Встань прямо.</li>
+      <li><span class="sn">2</span>Слегка согни колени (мягкие, не «заблокированные').</li>
+      <li><span class="sn">3</span>Наклоняй корпус вперёд, отводя таз назад — штанга скользит по бёдрам вниз.</li>
+      <li><span class="sn">4</span>Опускай до чувства сильного растяжения в бицепсе бедра (обычно чуть ниже колен).</li>
+      <li><span class="sn">5</span>Возвращайся вверх за счёт ягодиц и бёдер, а не спины.</li>
+    </ul>
+    <div class="stitle">Ошибки</div>
+    <div class="tips">
+      <div class="tip"><i class="ti ti-check"></i>Спина прямая всегда — не скругляй поясницу</div>
+      <div class="tip"><i class="ti ti-check"></i>Штанга всегда близко к телу — не отводи вперёд</div>
+      <div class="tip"><i class="ti ti-check"></i>Не сгибай колени как в приседании — это не приседание</div>
+    </div>
+    <div class="stitle">Мышцы</div>
+    <div class="muscles"><span class="mt">Бицепс бедра</span><span class="mt">Ягодицы</span><span class="mt">Поясница</span></div>
+  </div></div></div>
+</div>
+
+<div class="sec-label">Грудь — финишер</div>
+
+<div class="card" onclick="toggle(this)">
+  <div class="card-hd">
+    <div class="num">5</div>
+    <div class="card-title">
+      <div class="name">Сведения в тренажёре</div>
+      <div class="sets">3 подхода × 20 повторов</div>
+    </div>
+    <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+  </div>
+  <div class="card-bd"><div class="card-bd-inner"><div class="card-bd-content">
+    <div class="media-links">
+      <a class="ml video" href="https://www.youtube.com/results?search_query=сведения+грудные+тренажёр+бабочка+техника" target="_blank" rel="noopener"><i class="ti ti-brand-youtube"></i> Видео</a>
+      <a class="ml" href="https://www.google.com/search?q=pec+deck+butterfly+machine+chest&tbm=isch" target="_blank" rel="noopener"><i class="ti ti-photo"></i> Фото тренажёра</a>
+    </div>
+    <div class="mblock">
+      <div class="mtitle">«Бабочка» / Pec Deck — тренажёр для грудных</div>
+      <div class="mdesc">Сидишь спиной к подушке, руки разведены, сводишь рукояти перед собой. Изолированная прокачка грудных.</div>
+    </div>
+    <div class="stitle">Техника</div>
+    <ul class="steps">
+      <li><span class="sn">1</span>Сядь, спина прижата к подушке. Предплечья на мягких рычагах (или за ручки).</li>
+      <li><span class="sn">2</span>Разведи руки до лёгкого натяжения в груди — это стартовая позиция.</li>
+      <li><span class="sn">3</span>Своди рычаги перед собой, сжимая грудные мышцы.</li>
+      <li><span class="sn">4</span>В центре — пауза и сильное сжатие. Медленно возвращайся.</li>
+    </ul>
+    <div class="stitle">Ошибки</div>
+    <div class="tips">
+      <div class="tip"><i class="ti ti-check"></i>Не запрокидывай голову назад — смотри прямо</div>
+      <div class="tip"><i class="ti ti-check"></i>Не разводи слишком широко — чуть больше ширины плеч достаточно</div>
+    </div>
+    <div class="stitle">Мышцы</div>
+    <div class="muscles"><span class="mt">Большая грудная</span><span class="mt">Передняя дельта</span></div>
+  </div></div></div>
+</div>
+</div><!-- /day-1 -->
+
+
+<!-- ═══════════════════════════════════════════
+     ДЕНЬ 3
+════════════════════════════════════════════ -->
+<div class="pane" id="day-2">
+<div class="day-header">
+  <h1>День 3 — грудь, плечи, спина</h1>
+  <p>Нажми на упражнение, чтобы открыть технику выполнения</p>
+  <div class="focus-tags">
+    <span class="focus-tag">Грудные</span>
+    <span class="focus-tag">Плечи</span>
+    <span class="focus-tag">Широчайшие</span>
+    <span class="focus-tag">Трицепс</span>
+  </div>
+</div>
+
+<div class="sec-label">Суперсет — спина + грудь</div>
+<div class="ss-badge"><i class="ti ti-refresh"></i> Суперсет D</div>
+
+<div class="card" onclick="toggle(this)">
+  <div class="card-hd">
+    <div class="num">1a</div>
+    <div class="card-title">
+      <div class="name">Вертикальная тяга (верхний блок)</div>
+      <div class="sets">4 подхода: 15 / 12 / 10 / 10</div>
+    </div>
+    <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+  </div>
+  <div class="card-bd"><div class="card-bd-inner"><div class="card-bd-content">
+    <div class="media-links">
+      <a class="ml video" href="https://www.youtube.com/results?search_query=вертикальная+тяга+верхний+блок+широкий+хват+техника" target="_blank" rel="noopener"><i class="ti ti-brand-youtube"></i> Видео</a>
+      <a class="ml" href="https://www.google.com/search?q=lat+pulldown+cable+machine+wide+grip&tbm=isch" target="_blank" rel="noopener"><i class="ti ti-photo"></i> Фото тренажёра</a>
+    </div>
+    <div class="mblock">
+      <div class="mtitle">Блочный тренажёр — верхняя тяга (Lat Pulldown)</div>
+      <div class="mdesc">Кабельный тренажёр с широкой рукоятью. Сидишь лицом к стеку, колени зафиксированы валиками. Классическое упражнение для широчайших.</div>
+    </div>
+    <div class="stitle">Техника</div>
+    <ul class="steps">
+      <li><span class="sn">1</span>Сядь, колени под валики. Возьмись за рукоять широким прямым хватом (чуть шире плеч).</li>
+      <li><span class="sn">2</span>Слегка откинь корпус назад (10–15°). Взгляд вперёд-вверх.</li>
+      <li><span class="sn">3</span>Тяни рукоять к верхней части груди — локти уходят вниз и назад.</li>
+      <li><span class="sn">4</span>В нижней точке — лопатки максимально сведены. Пауза 1 секунда.</li>
+      <li><span class="sn">5</span>Медленно возвращай рукоять вверх — контролируй растяжение.</li>
+    </ul>
+    <div class="stitle">Ошибки</div>
+    <div class="tips">
+      <div class="tip"><i class="ti ti-check"></i>Не тяни рукоять за голову — это травмоопасно для плеч</div>
+      <div class="tip"><i class="ti ti-check"></i>Не раскачивай корпус — небольшой наклон фиксирован</div>
+    </div>
+    <div class="stitle">Мышцы</div>
+    <div class="muscles"><span class="mt">Широчайшие</span><span class="mt">Ромбовидные</span><span class="mt">Бицепс</span></div>
+  </div></div></div>
+</div>
+
+<div class="card" onclick="toggle(this)">
+  <div class="card-hd">
+    <div class="num">1b</div>
+    <div class="card-title">
+      <div class="name">Жим гантелей от груди лёжа</div>
+      <div class="sets">4 подхода: 15 / 12 / 10 / 10</div>
+    </div>
+    <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+  </div>
+  <div class="card-bd"><div class="card-bd-inner"><div class="card-bd-content">
+    <div class="media-links">
+      <a class="ml video" href="https://www.youtube.com/results?search_query=жим+гантелей+лёжа+от+груди+техника" target="_blank" rel="noopener"><i class="ti ti-brand-youtube"></i> Видео</a>
+      <a class="ml" href="https://www.google.com/search?q=dumbbell+flat+bench+press+technique&tbm=isch" target="_blank" rel="noopener"><i class="ti ti-photo"></i> Фото</a>
+    </div>
+    <div class="mblock">
+      <div class="mtitle">Гантели — горизонтальная скамья</div>
+      <div class="mdesc">Аналог жима штанги, но гантели дают большую амплитуду и лучше нагружают каждую сторону грудных независимо.</div>
+    </div>
+    <div class="stitle">Техника</div>
+    <ul class="steps">
+      <li><span class="sn">1</span>Ляг на горизонтальную скамью. Ступни на полу.</li>
+      <li><span class="sn">2</span>Гантели на уровне груди, локти чуть ниже плеч (~45° от тела).</li>
+      <li><span class="sn">3</span>Выжимай гантели вверх до почти полного выпрямления рук.</li>
+      <li><span class="sn">4</span>Опускай медленно — чуть ниже уровня груди для полной амплитуды.</li>
+    </ul>
+    <div class="stitle">Ошибки</div>
+    <div class="tips">
+      <div class="tip"><i class="ti ti-check"></i>Не разводи локти слишком широко — 45° от корпуса оптимально</div>
+      <div class="tip"><i class="ti ti-check"></i>Лопатки сведены и опущены — сохраняй лёгкий прогиб в пояснице</div>
+    </div>
+    <div class="stitle">Мышцы</div>
+    <div class="muscles"><span class="mt">Большая грудная</span><span class="mt">Передняя дельта</span><span class="mt">Трицепс</span></div>
+  </div></div></div>
+</div>
+
+<div class="sec-label">Суперсет — грудь изоляция</div>
+<div class="ss-badge"><i class="ti ti-refresh"></i> Суперсет E</div>
+
+<div class="card" onclick="toggle(this)">
+  <div class="card-hd">
+    <div class="num">2a</div>
+    <div class="card-title">
+      <div class="name">Отжимания от пола</div>
+      <div class="sets">4 подхода × 10 повторов</div>
+    </div>
+    <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+  </div>
+  <div class="card-bd"><div class="card-bd-inner"><div class="card-bd-content">
+    <div class="media-links">
+      <a class="ml video" href="https://www.youtube.com/results?search_query=отжимания+от+пола+правильная+техника" target="_blank" rel="noopener"><i class="ti ti-brand-youtube"></i> Видео</a>
+      <a class="ml" href="https://www.google.com/search?q=push+up+perfect+form&tbm=isch" target="_blank" rel="noopener"><i class="ti ti-photo"></i> Фото</a>
+    </div>
+    <div class="mblock">
+      <div class="mtitle">Без оборудования — на полу или матах</div>
+      <div class="mdesc">Базовое упражнение с собственным весом. В контексте суперсета после сведений — хорошо добивает грудные.</div>
+    </div>
+    <div class="stitle">Техника</div>
+    <ul class="steps">
+      <li><span class="sn">1</span>Упор лёжа: руки чуть шире плеч, тело прямое от головы до пяток.</li>
+      <li><span class="sn">2</span>Опускайся, пока грудь почти не коснётся пола. Локти под углом ~45°.</li>
+      <li><span class="sn">3</span>Выжимай тело вверх до полного выпрямления рук.</li>
+      <li><span class="sn">4</span>Всё тело — одна прямая линия. Не прогибай таз вниз и не поднимай вверх.</li>
+    </ul>
+    <div class="stitle">Ошибки</div>
+    <div class="tips">
+      <div class="tip"><i class="ti ti-check"></i>Таз не провисает — держи корпус в планке</div>
+      <div class="tip"><i class="ti ti-check"></i>Не смотри вперёд — шея нейтральна, взгляд вниз</div>
+    </div>
+    <div class="stitle">Мышцы</div>
+    <div class="muscles"><span class="mt">Большая грудная</span><span class="mt">Трицепс</span><span class="mt">Передняя дельта</span><span class="mt">Кор</span></div>
+  </div></div></div>
+</div>
+
+<div class="card" onclick="toggle(this)">
+  <div class="card-hd">
+    <div class="num">2b</div>
+    <div class="card-title">
+      <div class="name">Сведение на грудные в тренажёре</div>
+      <div class="sets">4 подхода: 15 / 15 / 12 / 12</div>
+    </div>
+    <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+  </div>
+  <div class="card-bd"><div class="card-bd-inner"><div class="card-bd-content">
+    <div class="media-links">
+      <a class="ml video" href="https://www.youtube.com/results?search_query=сведение+грудных+кроссовер+тренажёр+техника" target="_blank" rel="noopener"><i class="ti ti-brand-youtube"></i> Видео</a>
+      <a class="ml" href="https://www.google.com/search?q=cable+crossover+chest+fly+machine&tbm=isch" target="_blank" rel="noopener"><i class="ti ti-photo"></i> Фото тренажёра</a>
+    </div>
+    <div class="mblock">
+      <div class="mtitle">Кроссовер или «Бабочка» (Pec Deck)</div>
+      <div class="mdesc">Можно делать на кроссовере (тросы с обеих сторон) или в тренажёре «бабочка». Изоляция грудных мышц.</div>
+    </div>
+    <div class="stitle">Техника (кроссовер)</div>
+    <ul class="steps">
+      <li><span class="sn">1</span>Встань в центре кроссовера. Рукояти на уровне плеч или чуть выше.</li>
+      <li><span class="sn">2</span>Шаг вперёд. Руки разведены в стороны, лёгкий наклон вперёд.</li>
+      <li><span class="sn">3</span>Своди руки перед собой дугой, скрещивая в нижней точке.</li>
+      <li><span class="sn">4</span>В центре — пиковое сжатие грудных. Медленно возвращай.</li>
+    </ul>
+    <div class="stitle">Мышцы</div>
+    <div class="muscles"><span class="mt">Большая грудная</span><span class="mt">Передняя дельта</span></div>
+  </div></div></div>
+</div>
+
+<div class="sec-label">Плечи</div>
+
+<div class="card" onclick="toggle(this)">
+  <div class="card-hd">
+    <div class="num">3</div>
+    <div class="card-title">
+      <div class="name">Жим в Смите от плеч</div>
+      <div class="sets">4 подхода: 15 / 12 / 10 / 8+8</div>
+    </div>
+    <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+  </div>
+  <div class="card-bd"><div class="card-bd-inner"><div class="card-bd-content">
+    <div class="media-links">
+      <a class="ml video" href="https://www.youtube.com/results?search_query=жим+в+смите+от+плеч+сидя+техника" target="_blank" rel="noopener"><i class="ti ti-brand-youtube"></i> Видео</a>
+      <a class="ml" href="https://www.google.com/search?q=smith+machine+shoulder+press+seated&tbm=isch" target="_blank" rel="noopener"><i class="ti ti-photo"></i> Фото тренажёра</a>
+    </div>
+    <div class="mblock">
+      <div class="mtitle">Тренажёр Смита (Smith Machine)</div>
+      <div class="mdesc">Штанга на фиксированных вертикальных направляющих. Безопаснее свободной штанги для жима от плеч — траектория зафиксирована. Сидишь на скамье внутри рамы.</div>
+    </div>
+    <div class="stitle">Техника</div>
+    <ul class="steps">
+      <li><span class="sn">1</span>Поставь скамью внутри Смита. Сядь, штанга на уровне верхней части груди / ключиц.</li>
+      <li><span class="sn">2</span>Хват чуть шире плеч, локти чуть впереди плоскости тела.</li>
+      <li><span class="sn">3</span>Выжимай штангу строго вверх до почти полного выпрямления рук.</li>
+      <li><span class="sn">4</span>Медленно опускай до уровня подбородка.</li>
+    </ul>
+    <div class="drop"><strong>Последний подход 8+8:</strong> 8 повторов с рабочим весом → сброс ~15% → ещё 8 повторов без отдыха.</div>
+    <div class="stitle">Мышцы</div>
+    <div class="muscles"><span class="mt">Средняя дельта</span><span class="mt">Передняя дельта</span><span class="mt">Трицепс</span><span class="mt">Трапеция</span></div>
+  </div></div></div>
+</div>
+
+<div class="card" onclick="toggle(this)">
+  <div class="card-hd">
+    <div class="num">4</div>
+    <div class="card-title">
+      <div class="name">Протяжка V-образной рукоятью в кроссовере</div>
+      <div class="sets">4 подхода: 15 / 15 / 8+8+8 / 8+8+8</div>
+    </div>
+    <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+  </div>
+  <div class="card-bd"><div class="card-bd-inner"><div class="card-bd-content">
+    <div class="media-links">
+      <a class="ml video" href="https://www.youtube.com/results?search_query=разгибание+трицепса+v+рукоять+кроссовер+верхний+блок" target="_blank" rel="noopener"><i class="ti ti-brand-youtube"></i> Видео</a>
+      <a class="ml" href="https://www.google.com/search?q=tricep+pushdown+v-bar+cable+machine&tbm=isch" target="_blank" rel="noopener"><i class="ti ti-photo"></i> Фото</a>
+    </div>
+    <div class="mblock">
+      <div class="mtitle">Кроссовер — верхний блок, V-образная рукоять</div>
+      <div class="mdesc">Разгибание трицепса на верхнем блоке. V-образная рукоять (треугольная, два конца) позволяет нейтральный хват — меньше нагрузки на запястья.</div>
+    </div>
+    <div class="stitle">Техника</div>
+    <ul class="steps">
+      <li><span class="sn">1</span>Пристегни V-рукоять к верхнему блоку. Возьмись обоими концами.</li>
+      <li><span class="sn">2</span>Встань близко к стойке. Локти прижаты к телу, предплечья параллельны полу.</li>
+      <li><span class="sn">3</span>Разгибай руки вниз до полного выпрямления — только предплечья двигаются.</li>
+      <li><span class="sn">4</span>В нижней точке — пауза и сжатие трицепса. Медленно возвращай.</li>
+    </ul>
+    <div class="drop"><strong>Дроп-сеты (3–4 подходы):</strong> 8 повторов → сброс → 8 → сброс → 8.</div>
+    <div class="stitle">Ошибки</div>
+    <div class="tips">
+      <div class="tip"><i class="ti ti-check"></i>Локти не двигаются вперёд-назад — строго прижаты к бокам</div>
+      <div class="tip"><i class="ti ti-check"></i>Не наклоняй корпус вперёд ради веса — это снимает нагрузку</div>
+    </div>
+    <div class="stitle">Мышцы</div>
+    <div class="muscles"><span class="mt">Трицепс (все головы)</span></div>
+  </div></div></div>
+</div>
+
+<div class="sec-label">Суперсет — спина и задняя дельта</div>
+<div class="ss-badge"><i class="ti ti-refresh"></i> Суперсет F</div>
+
+<div class="card" onclick="toggle(this)">
+  <div class="card-hd">
+    <div class="num">5a</div>
+    <div class="card-title">
+      <div class="name">Горизонтальная тяга (нижний блок)</div>
+      <div class="sets">3 подхода × 10 повторов</div>
+    </div>
+    <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+  </div>
+  <div class="card-bd"><div class="card-bd-inner"><div class="card-bd-content">
+    <div class="media-links">
+      <a class="ml video" href="https://www.youtube.com/results?search_query=горизонтальная+тяга+нижний+блок+сидя+техника" target="_blank" rel="noopener"><i class="ti ti-brand-youtube"></i> Видео</a>
+      <a class="ml" href="https://www.google.com/search?q=seated+cable+row+low+pulley+machine&tbm=isch" target="_blank" rel="noopener"><i class="ti ti-photo"></i> Фото тренажёра</a>
+    </div>
+    <div class="mblock">
+      <div class="mtitle">Нижний блок — тяга сидя (Seated Cable Row)</div>
+      <div class="mdesc">Кабельный тренажёр с нижним расположением троса. Сидишь на скамье, ноги упираются в платформу. Прикрепи V-образную рукоять или широкую.</div>
+    </div>
+    <div class="stitle">Техника</div>
+    <ul class="steps">
+      <li><span class="sn">1</span>Сядь, ноги упёрты в платформу, колени чуть согнуты. Спина прямая.</li>
+      <li><span class="sn">2</span>Возьмись за рукоять. Начальное положение — руки вперёд, лёгкое растяжение спины.</li>
+      <li><span class="sn">3</span>Тяни рукоять к животу — локти уходят назад вдоль тела.</li>
+      <li><span class="sn">4</span>В крайней точке — лопатки сведены, пауза 1 секунду. Медленно возвращай.</li>
+    </ul>
+    <div class="stitle">Ошибки</div>
+    <div class="tips">
+      <div class="tip"><i class="ti ti-check"></i>Не раскачивай корпус — небольшой наклон вперёд при вытяжении допустим</div>
+      <div class="tip"><i class="ti ti-check"></i>Не горбись — держи грудь приподнятой на протяжении всего подхода</div>
+    </div>
+    <div class="stitle">Мышцы</div>
+    <div class="muscles"><span class="mt">Широчайшие</span><span class="mt">Трапеция</span><span class="mt">Ромбовидные</span><span class="mt">Бицепс</span></div>
+  </div></div></div>
+</div>
+
+<div class="card" onclick="toggle(this)">
+  <div class="card-hd">
+    <div class="num">5b</div>
+    <div class="card-title">
+      <div class="name">Задняя дельта в тренажёре</div>
+      <div class="sets">3 подхода × 10 повторов</div>
+    </div>
+    <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+  </div>
+  <div class="card-bd"><div class="card-bd-inner"><div class="card-bd-content">
+    <div class="media-links">
+      <a class="ml video" href="https://www.youtube.com/results?search_query=задняя+дельта+тренажёр+бабочка+наоборот+техника" target="_blank" rel="noopener"><i class="ti ti-brand-youtube"></i> Видео</a>
+      <a class="ml" href="https://www.google.com/search?q=rear+delt+fly+pec+deck+machine+reverse&tbm=isch" target="_blank" rel="noopener"><i class="ti ti-photo"></i> Фото тренажёра</a>
+    </div>
+    <div class="mblock">
+      <div class="mtitle">«Бабочка» наоборот / Rear Delt Fly</div>
+      <div class="mdesc">Тренажёр «бабочка» — но садишься лицом к подушке и отводишь руки назад. Изоляция задней дельты.</div>
+    </div>
+    <div class="stitle">Техника</div>
+    <ul class="steps">
+      <li><span class="sn">1</span>Сядь лицом к подушке тренажёра. Возьмись за горизонтальные рукояти.</li>
+      <li><span class="sn">2</span>Отводи руки назад и в стороны — сводя лопатки.</li>
+      <li><span class="sn">3</span>В крайней точке — пауза 1 секунда.</li>
+      <li><span class="sn">4</span>Медленно возвращай вперёд, сопротивляясь весу.</li>
+    </ul>
+    <div class="stitle">Ошибки</div>
+    <div class="tips">
+      <div class="tip"><i class="ti ti-check"></i>Руки почти прямые — не сгибай сильно в локтях</div>
+      <div class="tip"><i class="ti ti-check"></i>Небольшой вес + чёткое сокращение — лучше большого веса с читингом</div>
+    </div>
+    <div class="stitle">Мышцы</div>
+    <div class="muscles"><span class="mt">Задняя дельта</span><span class="mt">Ромбовидные</span><span class="mt">Трапеция</span></div>
+  </div></div></div>
+</div>
+</div><!-- /day-2 -->
 
 <script>
-function toggle(card) {
+function showDay(n){
+  document.querySelectorAll('.tab').forEach(function(t,i){t.classList.toggle('active',i===n)});
+  document.querySelectorAll('.pane').forEach(function(p,i){p.classList.toggle('active',i===n)});
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function toggle(card){
   card.classList.toggle('open');
 }
 </script>
+</body>
+</html>
